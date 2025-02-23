@@ -1,0 +1,26 @@
+/*
+  Al quitarle margen y padeo no muestra la barra de desplazamiento
+  si hay espacio suficiente
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+
+/*
+  Si les resulta molesto que muestre el dibujo arriba a la izquierda
+  puede utilizar esta configuración para que siempre lo muestre centrado.
+*/
+
+body {
+  height: 100vh;  /* Utiliza el 100% del tamaño vertical de la página (viewport height) */
+  display: flex;  /* Hace que los elementos de body sean un contenedor flex, por defecto row */
+  flex-direction: column;  /* Los elementos se agregan encolumnados */
+  justify-content: center;  /* Centra los contendores flex */
+  align-items: center;  /* Centra otros elementos. */
+}

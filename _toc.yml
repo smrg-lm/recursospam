@@ -1,0 +1,42 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Algoritmos Básicos en p5.js
+    chapters:
+
+    - file: pa01/ch01/intro-vsjsp5.md
+      sections:
+      - file: pa01/ch01/config-vsc.md
+      - file: pa01/ch01/intro-js.md
+      - file: pa01/ch01/intro-p5.md
+
+    - file: pa01/ch02/estructuras-dyc.md
+      sections:
+      - file: pa01/ch02/datos.md
+      - file: pa01/ch02/control.md
+
+    - file: pa01/ch03/funciones.md
+
+    - file: pa01/ch04/clases.md
+
+    - file: pa01/ch05/movimiento.md
+
+    - file: pa01/ch06/partículas.md
+
+    - file: pa01/ch07/intro.md
+      sections:
+      - file: pa01/ch07/audio-digital.md
+      - file: pa01/ch07/p5sonido.md
+
+    - file: pa01/ch08/p5imagen.md
+
+    - file: pa01/debuging.md
+
+  - caption: Arquitectura Cliente-Servidor en Node.js
+    chapters:
+    - file: pa02/ch01/nodejs-commonjs.md
+    - file: pa02/ch02/cliente-servidor.md
+    - file: pa02/ch03/nodejs-express.md

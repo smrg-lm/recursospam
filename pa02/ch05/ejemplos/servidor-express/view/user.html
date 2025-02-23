@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de usuario/a</title>
+</head>
+
+<body>
+
+    <h1>Página de usuario/a</h1>
+
+    <!-- Formulario para enviar el método POST de HTTP -->
+    <!-- Porbar con GET y mostrar cómo agrega los datos a la URL y se pueden ver en el navegador, mal. -->
+    <form action="/user" method="POST">
+        <div>
+            <label for="usernameElementID">Nombre</label>
+            <input name="usernameData" id="usernameElementID" value="nombre" />
+        </div>
+        <div>
+            <label for="passwordElementID">Clave</label>
+            <input name="passwordData" id="passwordElementID" value="clave" />
+        </div>
+        <div>
+            <button type="submit">Send my greetings</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

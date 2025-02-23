@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="">
+  <head>
+    <!--
+      Configuración básica de la página web. Es independiente de Processing.
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      Título de la página que se muestra en la pestaña.
+    -->
+    <title>01 Estructura</title>
+
+    <!--
+      Hoja es estilo de la página.
+    -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!--
+      Las siguientes dos etiquetas agregan la librería p5.js a esta página web.
+      La librerías p5.sound está comentada para ahorrar recursos porque no la vamos
+      a utilizar.
+
+      Por cada pestaña del navegadro hay una instacia del intérprete de JavaScript
+      con el contexto de ejecución de la ventana (representado por el objeto `window`).
+      El código de todos los scripts que se agregan a la página web va a ese entorno
+      (global) y el órden en que se agregan puede ser importante (no podemos usar algo
+      que no fue definido anteriormente en el contexto global).
+    -->
+    <script src="libraries/p5.min.js"></script>
+    <!-- <script src="libraries/p5.sound.min.js"></script> -->
+  </head>
+
+  <body>
+    <!--
+      Esta etiqueta incorpora el boceto de processing en el cuerpo de la página.
+      La librería p5.js crea dinámicamente un elemento `<main>` y dentro de este un
+      elemento `<canvas>` que es donde se muestra el boceto.
+
+      Esto se puede ver inspeccionando el código de la página web con las herramientas
+      de desarrollo del navegador.
+    -->
+    <script src="sketch.js"></script>
+  </body>

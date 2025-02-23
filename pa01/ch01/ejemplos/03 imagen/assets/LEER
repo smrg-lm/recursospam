@@ -1,0 +1,10 @@
+Por convención esta carpeta se llama assets, que quiere decir "bienes", como
+bienes de consumo a diferencia de los servicios. Estos "bienes" digitales
+pueden ser imágenes, sprites, modelos 3D, etc., se usa mucho en los videojuegos
+donde incluso se venden y compran ya hechos para desarrollar cosas específicas.
+Le llaman así, lo van a ver así, la podríamos llamar "data" como en Processing,
+cumple la misma función.
+
+
+tux.png
+"File:Tux.svg" by Larry Ewing, Simon Budig, Garrett LeSage is marked under CC0 1.0. To view the terms, visit http://creativecommons.org/publicdomain/zero/1.0/deed.en
