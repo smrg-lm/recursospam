@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bases de datos &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa02/ch06/db-sql';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa02/ch06/db-sql.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa02/ch06/db-sql.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bases de datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bases de datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lenguaje-sql">Lenguaje SQL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-bases-de-datos">Creación de bases de datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-tablas">Creación de tablas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos">Tipos de datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-tablas-con-tipos">Creación de tablas con tipos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acceso-y-modificacion-de-los-datos">Acceso y modificación de los datos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insercion">Inserción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion">Selección</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actualizacion">Actualización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#borrado">Borrado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda">Búsqueda</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bases-de-datos">
+<h1>Bases de datos<a class="headerlink" href="#bases-de-datos" title="Link to this heading">#</a></h1>
+<p>Existen varios modelos de bases de datos y su teoría es bastante extensa. Aquí solo vamos a ver sus principios básicos de manera práctica.</p>
+<ul class="simple">
+<li><p>Bases de datos relacionales (Bases de datos SQL)</p></li>
+<li><p>Bases de datos no relacionales (MongoDB)</p></li>
+</ul>
+<p>Las bases de datos se utilizan para guardar información persistente en dentro de un sitio web utilizando distintos tipos de datos y estructuras que orgnizan esos datos.</p>
+<p>…</p>
+<p>Las bases de datos son archivos, posiblemente binarios aunque también pueden ser archivos de texto, que contienen y manipulan información de manera eficiente.</p>
+<p>Las bases de datos se manipulan mediante aplicaciones especializadas (DBMS) que pueden estar basadas en la arquitectura cliente servidor.</p>
+<p>Dentro de las bases de datos se almacenan estructuras de datos, llamadas <em>tablas</em>, que básicamente organizan la información en filas y columnas.</p>
+<p>…</p>
+<p>Ejemplos de tablas en el pizarrón o la compu, analogía con las hojas de cálculo.</p>
+<ul class="simple">
+<li><p>Registros (filas)</p></li>
+<li><p>Campos (columnas)</p></li>
+<li><p>Tipos de datos (entero, real, cadena de caracteres, datos binarios, etc.)</p></li>
+<li><p>Tipos de llaves (llave primaria, <em>rowid</em> por defecto en sqlite)</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lenguaje-sql">
+<h1>Lenguaje SQL<a class="headerlink" href="#lenguaje-sql" title="Link to this heading">#</a></h1>
+<p>Para almacenar datos y hacer consultas en bases de datos, históricamente se utilizan lenguajes de dominio específico. El lenguaje que vamos a utilizar de llama SQL (se suele pronunciar “<em>si-kiu-el</em>”).</p>
+<p>SQL son las siglas en inglés de <em>Structure Query Language</em> que se traduce como Lenguaje de Consulta Estructurado. Es un lenguaje de programación de dominio específico estándar para la manipulación de bases de datos <em>relacionales</em>.</p>
+<p>Con este lenguaje se pueden acceder y manipular datos dentro de los principales sistemas de bases de datos como MySQL, SQL Server, Access, SQLite y muchos más.</p>
+<p>Para utilizar SQL debemos tener un <em>Sistema de Gestion de Bases de Datos</em>, conocido de manera abreviada como RDMS (<em>Relational Database Management System</em> en inglés). Es el software que se encarga de implementar la lógica de la interacción y el almacenamiento en las bases de datos.</p>
+<p>En vez de instalar una aplicación RDMS en el systema operativos vamos a utilizar el módulo npm <a class="reference external" href="https://www.npmjs.com/package/better-sqlite3">better-sqlite3</a> que viene con los binarios de la RDMS <a class="reference external" href="https://sqlite.org">SQLite</a> para utilizarlos directamente desde Node.js en distintos sistemas operativos (Windows, Linux y Mac).</p>
+<blockquote>
+<div><p>Nota: De esta manera, nuestro sitio web va a ser una aplicación que contiene todos los recursos de los que depende (el stack completo). Esto es característico de Node.js y facilita tanto de desarrollo como el despliegue de sitios web.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Nota: Al tratarse de un paquete de node que vienen compilado para cada SO no es posible compartir los módulos junto con el proyecto. Incluso, hay paquetes que se descargan y see compilan en la máquina de destino.</p>
+</div></blockquote>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="creacion-de-bases-de-datos">
+<h1>Creación de bases de datos<a class="headerlink" href="#creacion-de-bases-de-datos" title="Link to this heading">#</a></h1>
+<p>En los RDMS que funcionan como aplicaciones independientes es necesario crear las bases de datos mediante el siguiente comando SQL:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">miDB</span>
+</pre></div>
+</div>
+<p>Luego vamos a ver que al utilizar el módulo <code class="docutils literal notranslate"><span class="pre">better-sqlite3</span></code> esta acción se realiza al crear una instancia de la base de datos.</p>
+<p>Las bases de son archivos que contienen las <em>tablas</em>.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="creacion-de-tablas">
+<h1>Creación de tablas<a class="headerlink" href="#creacion-de-tablas" title="Link to this heading">#</a></h1>
+<p>Una <strong>tabla</strong> es una <em>colección de registros</em> de datos.</p>
+<p>Las filas de la tabla son los <strong>registros</strong> que tienen una cantidad de <strong>campos</strong> definidos según el diseño de la tabla. Una tabla es una colección de registros. Los campos son los datos que almacenamos y equivalen a las columnas de la tabla.</p>
+<p>Una base de datos puede tener más de una tabla, y cada tabla se identifica con un <strong>nombre</strong> único (<code class="docutils literal notranslate"><span class="pre">usuarios</span></code>, <code class="docutils literal notranslate"><span class="pre">materiales</span></code>, <code class="docutils literal notranslate"><span class="pre">imagenes</span></code>, etc).</p>
+<p>Por ejemplo:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>id</p></th>
+<th class="head text-center"><p>nombre</p></th>
+<th class="head text-center"><p>apellido</p></th>
+<th class="head text-center"><p>dirección</p></th>
+<th class="head text-center"><p>ciudad</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>Ariel</p></td>
+<td class="text-center"><p>Ramirez</p></td>
+<td class="text-center"><p>Calle Falsa 123</p></td>
+<td class="text-center"><p>La Tapla</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>2</p></td>
+<td class="text-center"><p>Gustavo</p></td>
+<td class="text-center"><p>Leguizamón</p></td>
+<td class="text-center"><p>Salta 789</p></td>
+<td class="text-center"><p>La Linda</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>3</p></td>
+<td class="text-center"><p>Liliana</p></td>
+<td class="text-center"><p>Herrero</p></td>
+<td class="text-center"><p>Rosario 1950</p></td>
+<td class="text-center"><p>La Nilda</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Esta tabla contiene tres registros, uno para cada persona, y cinco campos, con información extra como un numero identificador, nombre, apellido, etc. Esta tabla la llamamos <code class="docutils literal notranslate"><span class="pre">personas</span></code>.</p>
+<p>Para crear una tabla se utiliza la sentencia CREATE TABLE, pero ademas debemos indicar que tipo de informacion va a guardar esta tabla, con la siguiente sintaxis:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">personas</span><span class="p">(</span><span class="n">lista</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">campos</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">tipo</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">personas</span>
+<span class="p">(</span>
+<span class="n">nombre_del_campo</span><span class="w"> </span><span class="n">tipo_de_dato</span><span class="p">,</span>
+<span class="n">nombre_del_campo</span><span class="w"> </span><span class="n">tipo_de_dato</span><span class="p">,</span>
+<span class="n">nombre_del_campo</span><span class="w"> </span><span class="n">tipo_de_dato</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Lo que estamos creando con este comando es el formato de las columnas que va a tener la tabla.</p>
+<p>Siempre es necesario diseñar previamente la tabla que queremos y especificar los tipos de datos que vamos a manejar en cada campo.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tipos-de-datos">
+<h1>Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Link to this heading">#</a></h1>
+<p>Cada campo debe definir qué tipo de dato va a almacenar, de texto, numéricos, fechas, binarios, etc. A continuación se listan los tipos de datos más comunes para texto, binarios, números y fechas.</p>
+<p>Tipos de datos para manejar texto:</p>
+<ul class="simple">
+<li><p>CHAR(size): Cadena de caracteres fija según size (letras, números y caracteres especiales). Máximo 255 caracteres.</p></li>
+<li><p>VARCHAR(size): Cadena de caracteres variables (letras, números y caracteres) con tamalo maximo especificado entres parentesis. Maximo 255 caracteres.</p></li>
+<li><p>TINYTEXT: Cadena con un máximo de 255 caracteres.</p></li>
+<li><p>TEXT: Cadena con un máximo de 65535 caracteres.</p></li>
+<li><p>MEDIUMTEXT: Una cadena de caracteres de hasta 16777215 caracteres.</p></li>
+<li><p>LONGTEXT:Cadena de caracteres de hasta 4,294,967,295.</p></li>
+</ul>
+<p>Tipo de datos para objetos binarios:</p>
+<ul class="simple">
+<li><p>BLOB: Tipo de datos para BLOBs (objetos binarios largos, imagenes, audio). Hasta 65535 bytes de datos.</p></li>
+<li><p>MEDIUMBLOB: Para BLOBs de hasta 16777215 bytes de datos</p></li>
+<li><p>LONGBLOB: Para BLOBs de 4,294,967,295.</p></li>
+</ul>
+<p>Tipos de datos compuestos:</p>
+<ul class="simple">
+<li><p>ENUM(x, y, z, …): Este tipo permite manejar una serie de posibles valores. Se pueden guardar listas de hast 65535 valores.</p></li>
+<li><p>SET: Igual que el anterior solo que puede contener listas de 64 valores.</p></li>
+</ul>
+<p>Tipos de datos para manejar números:</p>
+<ul class="simple">
+<li><p>TINYINT(size): Números desde -128 a 127. Desde desde 0 a 255 si se usa UNSIGNED. Dígitos con size.</p></li>
+<li><p>SMALLINT(size): Números desde -32768 a 32767. Desde 0 a 65535 con UNSIGNED. Dígitos con size.</p></li>
+<li><p>MEDIUMINT(size): números desde -8388608 a 8388607. Desde 0 a 16777215 con UNSIGNED. Dígitos con size.</p></li>
+<li><p>INT(size): Números desde -2147483648 a 2147483647. Desde 0 a 4294967295 con UNSIGNED. Dígitos.</p></li>
+<li><p>BIGINT(size): -9223372036854775808 a 9223372036854775807. 0 a 18446744073709551615 con UNSIGNED*. Dígitos con size.</p></li>
+<li><p>FLOAT(size,d): Un pequeño numero con decimales (d=decimales). Dígitos con size.</p></li>
+<li><p>DOUBLE(size,d): Un número grande con decimales (d=decimales). Dígitos con size.</p></li>
+<li><p>DECIMAL(size,d): Un número del tipo DOUBLE guardado como un String. d=decimales, size=Dígitos.</p></li>
+</ul>
+<p>Tipos de datos para manejar fechas:</p>
+<ul class="simple">
+<li><p>DATE(): Una fecha con formaro YYYY-MM-DD. Desde ‘1000-01-01’ a ‘9999-12-31’.</p></li>
+<li><p>DATETIME(): Combinación entre fecha y hora con el formato YYYY-MM-DD HH:MM:SS. Desde ‘1000-01-01 00:00:00’ a ‘9999-12-31 23:59:59’.</p></li>
+<li><p>TIME(): Horario con el formato HH:MM:SS ‘-838:59:59’ to ‘838:59:59’</p></li>
+<li><p>YEAR: Año en formato de dos o cuatro dígitos.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="creacion-de-tablas-con-tipos">
+<h1>Creación de tablas con tipos<a class="headerlink" href="#creacion-de-tablas-con-tipos" title="Link to this heading">#</a></h1>
+<p>Supongamos que queremos crear la tabla que vimos antes, la de los nombres. Para eso utilizamos como vimos la sentencia CREATE TABLE.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">personas</span>
+<span class="p">(</span>
+<span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="n">apellido</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="n">direccion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="n">ciudad</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Se entiende claramente como vamos armando las tablas de manera facil con los tipos de datos.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="acceso-y-modificacion-de-los-datos">
+<h1>Acceso y modificación de los datos<a class="headerlink" href="#acceso-y-modificacion-de-los-datos" title="Link to this heading">#</a></h1>
+<section id="insercion">
+<h2>Inserción<a class="headerlink" href="#insercion" title="Link to this heading">#</a></h2>
+<p>Ahora pasaremos a ver las funciones para insertar, borrar y consultar datos de una tabla.</p>
+<p>Para <strong>insertar</strong> nuevos registros en una tabla usamos la sentencia <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">nombre_tabla</span><span class="w"> </span><span class="p">...</span>
+</pre></div>
+</div>
+<p>Los valores se pasan como lista separada por comas luego de la instrucción <code class="docutils literal notranslate"><span class="pre">VALUES</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">nombre_tabla</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">v3</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">personas</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ariel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ramirez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Calle Falsa 123&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;La Ciudad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Las inserciones se pueden hacer de dos maneras, especificando directamente todos los valores de los campos para que cree un registro, como en el ejemplo de arriba, o especificando los campos con los que se quiere inicializar el registro.</p>
+<p>Para crear un registro especificando solo algunos campos de deben enumerar como lista luego del nombre de la tabal:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">personas</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span><span class="p">,</span><span class="w"> </span><span class="n">ciudad</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">v3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nota: Salvo que se especifique lo contraio al crear la tabla, los campos a los que no se les asigne valor al crear el registro tienen por defecto el valor <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</section>
+<section id="seleccion">
+<h2>Selección<a class="headerlink" href="#seleccion" title="Link to this heading">#</a></h2>
+<p>Para obtener los datos almacenados en la base de datos se utiliza la instrucción <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> seguida por una lista separada por comas con los nombres de los campos cuyos valores va a retornar y luego se especifica la talba con <code class="docutils literal notranslate"><span class="pre">FROM</span></code>. Por ejemplo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personas</span>
+</pre></div>
+</div>
+<p>La expresión de arriba nos va a devolver un listado con el nombre y el apellido de todos los registros de la tabla <code class="docutils literal notranslate"><span class="pre">personas</span></code>.</p>
+<p>Si quisieramos seleccionar todos los campos de todos los registros se puede utilizar el comodín <code class="docutils literal notranslate"><span class="pre">*</span></code> en vez de los nombres de los campos:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">personas</span>
+</pre></div>
+</div>
+<p>La expresión de arriba nos va a devolver un listado de todos los registros con todos los valores de todos los campos.</p>
+</section>
+<section id="actualizacion">
+<h2>Actualización<a class="headerlink" href="#actualizacion" title="Link to this heading">#</a></h2>
+<p>Para actualizar los valores de los registros de una tabla se utiliza la instrucción <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> y se deben especificar los campos con la instrucción <code class="docutils literal notranslate"><span class="pre">SET</span></code> y seleccionar el registro con la instrucción <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p>
+<p>En el siguiente ejemplo cambiamos el <code class="docutils literal notranslate"><span class="pre">nombre</span></code> y el <code class="docutils literal notranslate"><span class="pre">apellido</span></code> el registro cuyo <code class="docutils literal notranslate"><span class="pre">id</span></code> vale <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">personas</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">nombre</span><span class="o">=</span><span class="s1">&#39;Pepe&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span><span class="o">=</span><span class="s1">&#39;Pipi&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Los valores de los campos los especifiamos como una lista de asignaciones separadas por coma luego de la palabra <code class="docutils literal notranslate"><span class="pre">SET</span></code>, de la siguiente forma <code class="docutils literal notranslate"><span class="pre">campo=valor</span></code>.</p>
+<p>El registro a modificar que usamos junto a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> es el que tiene <code class="docutils literal notranslate"><span class="pre">1</span></code> como valor de <code class="docutils literal notranslate"><span class="pre">id</span></code> en este caso. Esto es para indentificar un registro inequivocamente, el <code class="docutils literal notranslate"><span class="pre">id</span></code> debe ser único por diseño.</p>
+<p><strong>Si no usáramos <code class="docutils literal notranslate"><span class="pre">WHERE</span></code></strong>, por ejemplo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">personas</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">nombre</span><span class="o">=</span><span class="s1">&#39;Pepe&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span><span class="o">=</span><span class="s1">&#39;Pipi&#39;</span>
+</pre></div>
+</div>
+<p><strong>Se cambian todos los registros</strong> de la tabla con el mismo valor para los campos definidios en <code class="docutils literal notranslate"><span class="pre">SET</span></code>. En el caso de arriba todas las personas se pasarían a llamar <em>Pepe Pipi</em>. Ojo, cuidado con esto, justo estos son campos que no deberían ser iguales para todos las personas, pero esto puede ser necesario para resetear algún campo en particular, algún estado, para todos los registros.</p>
+</section>
+<section id="borrado">
+<h2>Borrado<a class="headerlink" href="#borrado" title="Link to this heading">#</a></h2>
+<p>Para borrar un registro se utiliza la instrucción <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span></code> especificando la tabla y se debe identificar el registro con <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> según alguno de sus campos.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">personas</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="o">=</span><span class="s1">&#39;Pepe&#39;</span>
+</pre></div>
+</div>
+<p>Pero ojo, pueden haber dos personas con el mismo nombre y apellido. Por eso es importante encontrar el <code class="docutils literal notranslate"><span class="pre">id</span></code> o definir campos únicos como veremos luego.</p>
+<p>Si queremos eliminar todos los registros de una tabla se puede hacer simplemente sin el <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">personas</span>
+</pre></div>
+</div>
+<p>O</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">personas</span>
+</pre></div>
+</div>
+<p>Ojo con estas expresiones, si se omite <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> podemos hacer macana fácilmente.</p>
+</section>
+<section id="busqueda">
+<h2>Búsqueda<a class="headerlink" href="#busqueda" title="Link to this heading">#</a></h2>
+<p>En casos anteriores para especificar que columna setear pero también se puede utilizar para otras sentencias, por ejemplo para seleccionar datos que cumplan un criterio. En este caso se necesita especificar <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> para definir los campos y <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> para elegir los registros según el valor de algún campo.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">campo1</span><span class="p">,</span><span class="w"> </span><span class="n">campo2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">nombre_tabla</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">campoN</span><span class="w"> </span><span class="n">operador</span><span class="w"> </span><span class="n">valor</span>
+</pre></div>
+</div>
+<p>Por ejemplo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personas</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ciudad</span><span class="o">=</span><span class="s1">&#39;La Nilda&#39;</span>
+</pre></div>
+</div>
+<p>Lo que devuelve el nombre y apellido de todos los registros cuyo campo <em>ciudad</em> es igual a <code class="docutils literal notranslate"><span class="pre">'La</span> <span class="pre">Nilda'</span></code>.</p>
+<p>Los operadores que se pueden usar con <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> son:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> Igual</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> Distinto</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> mayor que</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> menor que</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> mayor o igual que</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> menor o igual que</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> entre un rango</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIKE</span></code> busqueda de patrones</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span></code> entre posibles valores específicos</p></li>
+</ul>
+<p>Al usar where se pueden combinar más operaciones con los operadores lógicos <code class="docutils literal notranslate"><span class="pre">OR</span></code>, <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">NOT</span></code>. SQL también incluye funciones y otro tipo de funcionalidad que veremos luego.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="enlaces">
+<h1>Enlaces<a class="headerlink" href="#enlaces" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://www.w3schools.com/sql/default.asp">https://www.w3schools.com/sql/default.asp</a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa02/ch06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bases de datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lenguaje-sql">Lenguaje SQL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-bases-de-datos">Creación de bases de datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-tablas">Creación de tablas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos">Tipos de datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-tablas-con-tipos">Creación de tablas con tipos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acceso-y-modificacion-de-los-datos">Acceso y modificación de los datos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insercion">Inserción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion">Selección</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actualizacion">Actualización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#borrado">Borrado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda">Búsqueda</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

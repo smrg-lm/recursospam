@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Protocolo HTTP &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa02/ch04/protocolo-http';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa02/ch04/protocolo-http.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa02/ch04/protocolo-http.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Protocolo HTTP</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjunto-de-protocolos-de-internet">Conjunto de protocolos de internet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capas">Capas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-estructurados-en-capas">Datos estructurados en capas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Protocolo HTTP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mensajes-http">Mensajes HTTP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-de-las-peticiones">Formato de las peticiones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-de-las-respuestas">Formato de las Respuestas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-http">Métodos HTTP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#en-sintesis">En síntesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="protocolo-http">
+<h1>Protocolo HTTP<a class="headerlink" href="#protocolo-http" title="Link to this heading">#</a></h1>
+<section id="conjunto-de-protocolos-de-internet">
+<h2>Conjunto de protocolos de internet<a class="headerlink" href="#conjunto-de-protocolos-de-internet" title="Link to this heading">#</a></h2>
+<p>Un <strong>protocolo</strong> es una especificación precisa de cómo deben organizarse los datos en cuanto a formato binario y organización de contenido (información/datos).</p>
+<p>Denominado en inglés <em>Internet protocol suite</em> es el <strong>conjunto de protocolos</strong> organizados que especifican la transmisión de datos según <strong>capas</strong> con finalidades específicas.</p>
+<p>Por ejemplo, el protocolo HTTP organiza el formato de transmisión de datos para hipertexto y otros recursos pero no se encarga de otras tareas como el direccionamiento de datagramas (paquetes de datos) a más bajo nivel.</p>
+<p>El conjunto de protocolos de internet también se conoce como <strong>protocolo TCP/IP</strong>. Lo cuál puede resultar confuso.</p>
+<section id="capas">
+<h3>Capas<a class="headerlink" href="#capas" title="Link to this heading">#</a></h3>
+<p>El concepto de <em>capa</em> se utiliza para encapsular la información en distintas secciones que no necesitan conocer la estructura de las demás.</p>
+<p>Dentro del conjunto de protocolos de internet existen las siguiente capas de la superior a la inferior:</p>
+<ul class="simple">
+<li><p>Capa de Aplicación (protocolo HTTP)</p></li>
+<li><p>Capa de Transporte (protocolo TCP/UDP)</p></li>
+<li><p>Capa de Internet (protocolo IPv4/6)</p></li>
+<li><p>Capa de Interfaz de Red (protocolo Ethernet)</p></li>
+</ul>
+<p>Existen varios protocolos distintos por capas, arriba solo se ejemplifican los que utilizamos.</p>
+<p>Estos conceptos son similares los <em>Modelo OSI</em> (sistema de interconexión de sistemas abiertos) que es un modelo estándar teórico pero no es lo mismo que el <em>Conjuntos de Protocolos de Internet</em>. Aunque comparten conceptos en común son modelos que se fueron desarrollando en paralelo y la organización general difiere.</p>
+</section>
+</section>
+<section id="datos-estructurados-en-capas">
+<h2>Datos estructurados en capas<a class="headerlink" href="#datos-estructurados-en-capas" title="Link to this heading">#</a></h2>
+<p>A nivel binario, las capas no son más que un formato de organización de pedazos información.</p>
+<p><a href="https://commons.wikimedia.org/wiki/File:UDP_encapsulation.svg#/media/File:UDP_encapsulation.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/UDP_encapsulation.svg" alt="UDP encapsulation.svg" height="250" width="400" style="background-color: white"></a><br>By <a href="https://en.wikipedia.org/wiki/User:Cburnett" class="extiw" title="en:User:Cburnett">en:User:Cburnett</a> original work, colorization by <a href="https://en.wikipedia.org/wiki/User:Kbrose" class="extiw" title="en:User:Kbrose">en:User:Kbrose</a> - Original artwork by <a href="https://en.wikipedia.org/wiki/User:Cburnett" class="extiw" title="en:User:Cburnett">en:User:Cburnett</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1546338">Link</a></p>
+<p>En la imagen de arriba se puede ver que cada capa contiene a la capa superior, desde la capa de enlace a la capa de aplicación. A su vez, en las capas intermedias se puede ver que tienen un ecabezado con información propia de la capa y la capa superior en la sección de datos (salvo para la capa de enlace que tiene pie al final).</p>
+<p>A cada capa no le importa el contenido de los datos, siemplemente los pasa como tales. Para el caso de las páginas HTML, la capa de aplicación sería el protocolo HTTP y para la capa de transporte sería el protocolo TCP.</p>
+<p>El siguiente es un gráfico interesante que muestra la transparencia que genera el encapsulamento de las conexiones entre cliente y servidor pese a la utilización de múltiples capas de infraestructura:</p>
+<p><a href="https://commons.wikimedia.org/wiki/File:IP_stack_connections.svg#/media/File:IP_stack_connections.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/IP_stack_connections.svg" alt="IP stack connections.svg" height="580" width="490" style="background-color: white"></a><br>By <a href="https://en.wikipedia.org/wiki/User:Kbrose" class="extiw" title="en:User:Kbrose">en:User:Kbrose</a> - Prior Wikipedia artwork by en:User:Cburnett, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1831900">Link</a></p>
+</section>
+<section id="id1">
+<h2>Protocolo HTTP<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Nota: Vamos a ver solo la estructura de las cosas sin entrar los detalles del significado de la infinidad de opciones y variaciones que el protocolo provee. Con esto como puento de partido más adelante podremos analizar los mensajes HTTP.</p>
+</div></blockquote>
+<p>De todo lo de arriba, que es importante para comprender el contexto, solo nos interesa la capa de aplicación utilizando el protocolo HTTP con su representación en modo de texto plano (HTTP/1.1).</p>
+<blockquote>
+<div><p>Nota: El protocolo HTTP es independiente de la capa de transporte, se puede usar cualquier protocolo que cumpla con determinadas condiciones, pero en la actualidad se utiliza el protocolo TPC que garantiza la integridad de los datos y el orden transmitidos por ser requisito del protocolo HTTP.</p>
+</div></blockquote>
+<p>El protocolo HTTP se basa en mensajes que intercambian información entre un agente del cliente y un servidor. Estos mensajes se denominan <strong>peticiones</strong>, realizadas por el cliente, y <strong>respuestas</strong>, realizadas por el servidor. A cada petición le corresponde una respuesta, recordar que de lo contrario se cuelga la página.</p>
+<p>La utilización de este protocolo requiere que siempre sea la aplicación cliente quien inicie la comunicación con el servidor haciendo un petición, por ejemplo, pedir una página web. La capa de internet se va a encargar de que el mensaje llegue al servidor de destino y la capa de transporte se va a encargar de establecer la conexión con la aplicación servidor.</p>
+<blockquote>
+<div><p>Nota: Existen parámetros de los encabezados HTTP que tienen que ver con la manera en que se establece la conexión mediante sockets, por ejemplo la opción <code class="docutils literal notranslate"><span class="pre">keep-alive</span></code>, por razones que no vamos a tratar. Pero esto no es más que parte del mensaje que se envía desde la aplicación servidor a la aplicación cliente.</p>
+</div></blockquote>
+<section id="mensajes-http">
+<h3>Mensajes HTTP<a class="headerlink" href="#mensajes-http" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Mostrar imágenes de: <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Messages">https://developer.mozilla.org/es/docs/Web/HTTP/Messages</a></p>
+</div></blockquote>
+<blockquote>
+<div><p>Especialmente: <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Messages/httpmsgstructure2.png">https://developer.mozilla.org/es/docs/Web/HTTP/Messages/httpmsgstructure2.png</a></p>
+</div></blockquote>
+<p>Los mensajes, ya sean peticiones o respuestas, se representan en texto plano y se componen de las siguiente partes:</p>
+<ul class="simple">
+<li><p>Una línea de inicio (start line).</p></li>
+<li><p>Un grupo, opciónal, de parámetros que se denominan <em>cabeceras HTTP</em> y se escriben en líneas consecutivas.</p></li>
+<li><p>Una línea vacía, que indica el final de toda la meta información de arriba.</p></li>
+<li><p>Un cuerpo que contiene los datos del mensaje. Según el tipo de mensaje esto pueden o no tener cuerpo.</p></li>
+</ul>
+<p>En el siguiente ejemplo todo es texto que no significa nada pero cumple con el formato de líneas de HTTP.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Línea</span> <span class="n">de</span> <span class="n">inicio</span>
+<span class="n">Cabecera1</span><span class="p">:</span> <span class="n">Tatatá</span>
+<span class="n">Cabecera2</span><span class="p">:</span> <span class="n">Teteté</span>
+
+<span class="n">Cuerpo</span> <span class="k">del</span> <span class="n">mensaje</span> <span class="n">que</span> <span class="n">puede</span> <span class="n">ser</span> <span class="n">cualquier</span> <span class="n">cosa</span> <span class="n">soportada</span> <span class="n">por</span> <span class="n">HTML</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="formato-de-las-peticiones">
+<h3>Formato de las peticiones<a class="headerlink" href="#formato-de-las-peticiones" title="Link to this heading">#</a></h3>
+<p>La <strong>línea de inicio</strong> contiene:</p>
+<ul class="simple">
+<li><p>Un <em>método HTTP</em>: GET, POST, PUT, etc.</p></li>
+<li><p>El camino de destino de la petición: URL (Uniform Resource Locator) relativa o absoluta.</p></li>
+<li><p>La versión del protocolo HTTP utilizada en la comunicación.</p></li>
+</ul>
+<p>El ejemplo siguiente se compone del método <code class="docutils literal notranslate"><span class="pre">GET</span></code>, la ruta principal <code class="docutils literal notranslate"><span class="pre">/</span></code> y la versión del protocolo <code class="docutils literal notranslate"><span class="pre">HTTP/1.1</span></code>:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></div>
+</div>
+<p>Las <strong>cabeceras HTTP</strong> de la petición, cada cabecera es una línea que contiene dos cadenas de caracteres separadas por <code class="docutils literal notranslate"><span class="pre">:</span></code>, de la siguiente forma:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Nombre</span><span class="o">-</span><span class="n">de</span><span class="o">-</span><span class="n">la</span><span class="o">-</span><span class="n">cabecera</span><span class="p">:</span> <span class="n">Otra</span> <span class="n">cadena</span> <span class="n">de</span> <span class="n">caracteres</span> <span class="n">que</span> <span class="n">varía</span> <span class="n">según</span> <span class="n">la</span> <span class="n">cabecera</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Las cabeceras de las peticiones son modificadores de la petición que especifican los detalles del mensaje.</p>
+<p>Luego de la línea en blanco viene el <strong>cuerpo de la petición</strong> que puede estar presente o no según el método HTTP. Por ejemplo, el método <code class="docutils literal notranslate"><span class="pre">POST</span></code> envía los datos en el cuerpo pero las peticiones que piden datos no suelen tener cuerpo. Los datos enviados pueden ser únicos, múltiples o por partes (“multipart”, ver más abajos en el cuerpo de las respuestas).</p>
+</section>
+<section id="formato-de-las-respuestas">
+<h3>Formato de las Respuestas<a class="headerlink" href="#formato-de-las-respuestas" title="Link to this heading">#</a></h3>
+<p>En las respuestas HTTP la <strong>línea inicial</strong> es la <strong>línea de estado</strong> y está compuesta por:</p>
+<ul class="simple">
+<li><p>La versión del protocolo: HTTP/1.1.</p></li>
+<li><p>El código de estado: 200, 404, 302.</p></li>
+<li><p>El texto descriptivo del estado: Ok, Not Found, Found.</p></li>
+</ul>
+<p>Las <strong>cabeceras HTTP</strong> siguen la misma estructura que para las peticiones.</p>
+<p>El <strong>cuerpo</strong> de las respuestas pueden ser de distintas maneras:</p>
+<ul class="simple">
+<li><p>Dato único de logitud conocida: Content-Type, Content-Length.</p></li>
+<li><p>Dato único de logitud desconocida que se codifica y envía por partes: Transfer-Encoding</p></li>
+<li><p>Múltiples datos: Content-Type: multipart/byteranges</p></li>
+</ul>
+</section>
+</section>
+<section id="metodos-http">
+<h2>Métodos HTTP<a class="headerlink" href="#metodos-http" title="Link to this heading">#</a></h2>
+<p>Los métodos HTTP indican distinto tipo de acciones que el cliente requiere del servidor. El protocolo define varios tipos de acciones concretas de las cuales vamos a utilizar solamente GET y POST en este curso.</p>
+<p>El método HTTP <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/GET">GET</a> se utiliza para solicitar recursos al servidor, es el método más usado y la acción por defecto en los navegadores web cada vez que utilizamos la barra de navegación o seguimos un enlace. Con respecto a su formato, la petición no tiene cuerpo y la respuesta sí (los datos pedidos).</p>
+<p>El método HTTP <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST">POST</a> se utiliza para enviar información al servidor, es el método que se utiliza para enviar información a través de formularios.</p>
+<p>También existe los métodos HEAD, PUT, DELETE, CONNECT, OPTIONS, TRACE y PATCH, que pueden ser consultados en este <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">enlace</a>. Según el protocolo, cada método HTTP define una semántica específica que debe ser implementada por la aplicación servidor.</p>
+</section>
+<section id="en-sintesis">
+<h2>En síntesis<a class="headerlink" href="#en-sintesis" title="Link to this heading">#</a></h2>
+<p>Los mensajes HTTP se componen de una línea inicial, encabezados y pueden tener o no un cuerpo. Los encabezados agregan información sobre el tipo de petición o respuesta, el dominio a la que se envía el mensaje, el tipo de contenido esperado, el agente que la realizar (p.e. el tipo de navegador y sistema operativo). El cuerpo son los datos que puede o no tener la petición según los tipos y casos.</p>
+<p>La API de express tiene un método de respuesta para cada tipo de petición <code class="docutils literal notranslate"><span class="pre">app.get()</span></code>, <code class="docutils literal notranslate"><span class="pre">app.post()</span></code>, <code class="docutils literal notranslate"><span class="pre">app.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">app.put()</span></code>, <code class="docutils literal notranslate"><span class="pre">app.delete()</span></code>, etc., lo que simplifica mucho la programación porque se encarga de muchas cosas que suceden en la transmisión y recepción de métodos y datos HTTP. En este curso no vamos a usar más que GET y POST.</p>
+</section>
+<section id="enlaces">
+<h2>Enlaces<a class="headerlink" href="#enlaces" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP">https://developer.mozilla.org/en-US/docs/Web/HTTP</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa02/ch04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjunto-de-protocolos-de-internet">Conjunto de protocolos de internet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capas">Capas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-estructurados-en-capas">Datos estructurados en capas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Protocolo HTTP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mensajes-http">Mensajes HTTP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-de-las-peticiones">Formato de las peticiones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-de-las-respuestas">Formato de las Respuestas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-http">Métodos HTTP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#en-sintesis">En síntesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

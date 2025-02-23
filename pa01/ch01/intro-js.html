@@ -1,0 +1,917 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Recursos de JavasScript utilizados &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa01/ch01/intro-js';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introducción a p5.js" href="intro-p5.html" />
+    <link rel="prev" title="Entorno de desarrollo" href="config-vsc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa01/ch01/intro-js.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa01/ch01/intro-js.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Recursos de JavasScript utilizados</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos-primitivos">Tipos de datos primitivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comentarios">Comentarios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Enlaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-y-operadores">Tipos y operadores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sobre-numeros">Sobre números</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sobre-cadenas">Sobre cadenas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercion-de-tipos">Coerción de tipos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#igualdades">Igualdades</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-interpretados-como-falso-falsy-value">Valores interpretados como falso (falsy value)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">Funciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-como-objetos">Funciones como objetos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-flecha">Función flecha</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencia-p5-js">Referencia p5.js</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="recursos-de-javasscript-utilizados">
+<h1>Recursos de JavasScript utilizados<a class="headerlink" href="#recursos-de-javasscript-utilizados" title="Link to this heading">#</a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>JavaScript es el lenguaje de la web (del lado del cliente). Es uno de los lenguajes más usados en el mundo. No es perfecto, fue pensado para un dominio específico que fue variando y madurando con los años. El proceso de estandarización fue algo complicado en sus comienzos por la competencia entre distintas empresas. Varias APIs no se estandarizaron rápidamente y la compatibilidad entre navegadores era todo un problema. Aún los sigue siendo, en menor medida, porque no todos los navegadores implementan todas las características de los estandar más nuevos. Pero sus implementaciones, estandarización y la documentación han mejorado mucho en los últimos años. Algunos aspectos del lenguaje, que son muy difíciles de cambiar por problemas de compatibilidad hacia atrás, suelen ser reprochables, por ejemplo, su tipado débil, coherción de tipos, y ciertas ambigüedades o complejidades en relación con la programación orientada a objetos, por ejemplo, la sobrecarga del operador <code class="docutils literal notranslate"><span class="pre">+</span></code> o de las funciones como contructores de ojetos y cieras complejidades conceptuales que surgen al implementar múltiples paradigmas y mantener sintaxis heredada. Pero la web no se puede romper.</p>
+<p>Según su definición más común es un lenguaje de tipado dinámico, basado en prototipos y orientado a objetos. Su estandarización se llama <em>ECMAScript</em> (estándar <a class="reference external" href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/">ECMA-262</a>) y depende la organización <em>Ecma International</em> que originalmente se llamaba <em>European Computer Manufacturers Association</em> (ECMA). El nombre <em>JavaScript</em> es marca registrada de Oracle.</p>
+<p>Debido a que mantener la compatibilidad hacia atrás y entre navegadores es un problema difícil de solucionar, en la actualidad se usa mucho los compiladores de código a código (transpiladores) que se implementan en distintos <em>frameworks</em> (generalmente se usa la librería Babel para esto). Esto también dió lugar a la implementación de otros lenguajes relacionadas a JavaScript como TypeScript, CoffeScript o la creación de extensions del lenguaje en distintos <em>frameworks</em> (ej. React), lo cual puede hacer que las cosas sean un poco más confusas, por eso lo aclaro.</p>
+<p>La versión del estándar que vamos a utilizar es <strong>ES6+</strong>, 2015 o posterior, siempre y cuando esté soportado al menos por Firefox y Chrome.</p>
+<p>Al ser un lenguaje interpretado, JavaScript depede de un programa intérprete que compile y ejecute el código dentro de un entorno de ejecución. Los entornos de ejecución (<em>scripting engines</em> o <em>javascript engine</em> en este caso) son programas que corren en los navegadores por cada página web/pestaña o, más recientemente, como programa de línea de comandos (ej. Node.js) que pueden ser utilizados del lado del servidor.</p>
+<p>Además de ser un lenguaje interpretado, el entorno de ejecución de JavaScript está orientado hacia un contexto de ejecución específico: los navegadores. Por eso, al ejecutar código en un navegador las funciones de entrada/salida (IO por sus siglas en inglés) están limitadas a las abstracciones que brinda la aplicación. Por ejemplo, para imprimir mensajes se debe usar el método <code class="docutils literal notranslate"><span class="pre">log</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">console</span></code>, para mostrar información en pantalla se debe usar el objeto <code class="docutils literal notranslate"><span class="pre">docuement</span></code> a través de la interfaz DOM (document objet model) y el manejo de la pestaña/ventana en que se ejecuta el script se hace a través del objeto <code class="docutils literal notranslate"><span class="pre">window</span></code> que a su vez es el <em>objeto global</em> que representa el contexto de ejecución del programa en el navegador. <strong>Todas estas cuestiones las vamos a ir viendo y aclarando a medida que las vayamos necesitando</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Todo lo que se ve en estas secciones se puede probar en la consola del navegador.</p>
+</div>
+<section id="enlaces">
+<h3>Enlaces<a class="headerlink" href="#enlaces" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/JavaScript">https://en.wikipedia.org/wiki/JavaScript</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/ECMAScript">https://en.wikipedia.org/wiki/ECMAScript</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Source-to-source_compiler">https://en.wikipedia.org/wiki/Source-to-source_compiler</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/TypeScript">https://en.wikipedia.org/wiki/TypeScript</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/CoffeeScript">https://en.wikipedia.org/wiki/CoffeeScript</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript">https://developer.mozilla.org/es/docs/Web/JavaScript</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/es/docs/Learn/Front-end_web_developer">https://developer.mozilla.org/es/docs/Learn/Front-end_web_developer</a></p>
+</section>
+</section>
+<section id="tipos-de-datos-primitivos">
+<h2>Tipos de datos primitivos<a class="headerlink" href="#tipos-de-datos-primitivos" title="Link to this heading">#</a></h2>
+<p>Los tipos de datos con los que nos podemos encontrar en esta clase son los siguientes:</p>
+<ul class="simple">
+<li><p>number: enteros y de puento flotante: <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">0.1</span></code>, <code class="docutils literal notranslate"><span class="pre">1e-3</span></code>, etc.</p></li>
+<li><p>string: como literal escrito entre comillas simples o dobles: <code class="docutils literal notranslate"><span class="pre">'esto</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">string'</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;esto</span> <span class="pre">también&quot;</span></code>. Las cadenas están en formato UTF-16 por estandar pero se usa UTF-8 en los archivos fuente (8 y 16 refiere a grupos de bits, llamados <em>code unit</em>, UTF-8 puede usar de 1, 2 o 4 grupos de 8 bits, UTF-16 puede usar 1 o 2 grupos de 16, UTF-8 es compatible con ASCII, UTF-16 no lo es). Pueden ver una cadena con la secuencia de escape unicode: <code class="docutils literal notranslate"><span class="pre">'\u263A'</span></code>.</p></li>
+<li><p>boolean: a través de sus valores primitivos <code class="docutils literal notranslate"><span class="pre">true</span></code> y <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+<li><p>undefined: valor primitivo por defecto de las viariables, se usa la propiedad constante <code class="docutils literal notranslate"><span class="pre">undefined</span></code> del objeto global para acceder a él (ver la nota en los enlaces de abajo).</p></li>
+<li><p>null: es un valor primitivo, no depende de ningún objeto, que se usa para explicitar que el valor de la variable es intencionalmente nulo.</p></li>
+</ul>
+<p>También existen:</p>
+<ul class="simple">
+<li><p>bigint: Número entero de precisión extendida (más de 64 bits), <code class="docutils literal notranslate"><span class="pre">123n</span></code>.</p></li>
+<li><p>symbol: Es un objeto de valor único e irrepetible. Se crea usando la función <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> que puede recibir un string para poder identificarlo. Se usa como llave única en los diccionarios.</p></li>
+</ul>
+<p>El tipo de un valor se puede consultar con la palabra reservada <code class="docutils literal notranslate"><span class="pre">typeof</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No es lo mismo un tipo primitivo que los tipos de objetos que representan las primtivas. Esta es otra dichosa funcionalidad de JavaScript. Ver <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_primitives_and_string_objects">String primitives and String objects</a>, la diferencia está en que los objetos se representan de manera distinta a las primitivas.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>El resultado NaN</strong>: NaN quiere decir <em>Not a Number</em>, es posible obtener este valor como resultado de una operación entre números o número y cadenas, por ejemplo <code class="docutils literal notranslate"><span class="pre">7</span> <span class="pre">*</span> <span class="pre">'lalala'</span></code> retorna <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, <code class="docutils literal notranslate"><span class="pre">undefined</span> <span class="pre">+</span> <span class="pre">undefined</span></code> también, <code class="docutils literal notranslate"><span class="pre">Math.sqrt(-1)</span></code> también… En otros lenguajes de programación surge de las operaciones de punto flotante pero, una vez más, JavaScript hace su propia interpretación. No es un tipo primitivo.</p>
+</div>
+<section id="id1">
+<h3>Enlaces<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Overview">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Overview</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive">https://developer.mozilla.org/en-US/docs/Glossary/Primitive</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#literals">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#literals</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#primitive_values">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#primitive_values</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide</a></p>
+<p>Ejemplo: Hay dos páginas de referencia para <code class="docutils literal notranslate"><span class="pre">undefined</span></code>, cada una refiere a un contexto distinto, como valor primitivo y como propiedad del objeto global. Las propiedades del objeto global se pueden acceder directamente como valores (si espacio de nombres).</p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Undefined">https://developer.mozilla.org/en-US/docs/Glossary/Undefined</a></p>
+</section>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h2>
+<p>El lenguaje es sensible a mayúsculas y minúsculas. Los nombres de variables pueden estar formadas por letras unicode, guión bajo, signo monetario y números pero no pueden comenzar con un número.</p>
+<p>Ejemplos de nombres válidos:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">variable</span>
+<span class="nx">Variable</span>
+<span class="nx">$varible</span>
+<span class="nx">_variable</span>
+<span class="nx">varia_ble</span>
+</pre></div>
+</div>
+<p>Ejemplos de nombres inválidos:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">variable</span><span class="o">!</span>
+<span class="err">\</span><span class="nx">variable123</span>
+<span class="nx">varia</span><span class="w"> </span><span class="nx">ble</span>
+</pre></div>
+</div>
+<p>Las variables se pueden definir con las palabras reservadas <code class="docutils literal notranslate"><span class="pre">var</span></code> y <code class="docutils literal notranslate"><span class="pre">let</span></code>. No es lo mismo usar <code class="docutils literal notranslate"><span class="pre">var</span></code> o <code class="docutils literal notranslate"><span class="pre">let</span></code> y <strong>vamos a usar siempre <code class="docutils literal notranslate"><span class="pre">let</span></code></strong>. Lo que cambia son las reglas de alcance de las variables según se use una u otra palabra reservada.</p>
+<ul class="simple">
+<li><p>Las variables declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code> tienen alcance de función. Se recomiendo no usar en archivos fuente.</p></li>
+<li><p>Las variables declaradas con <code class="docutils literal notranslate"><span class="pre">let</span></code> tienen alcance de bloque. Muy similar/igual a C++/Java/Processing.</p></li>
+</ul>
+<p>Las constantes se definen con la palabra reservada <code class="docutils literal notranslate"><span class="pre">const</span></code>, en un giro semántico inesperado, las constantes son variables a las que no se le puede cambiar el valor. Por lo demás siguen las misma reglas de alcance que las variables declaradas con <code class="docutils literal notranslate"><span class="pre">let</span></code>.</p>
+<p>Uso correcto:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">123</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">MIL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variable</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">MIL</span><span class="p">);</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">h</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Incorrecto aunque pueda funcionar:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">123</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">MIL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variable</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">MIL</span><span class="p">);</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">h</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Las variables se pueden referenciar y asignar sin declarar o antes de su declaración por una técnica del complilador que se llama <em>hoisting</em>. Pero es algo que vamos a considerar un error por convención. Si utilizamos variables declaradas con <code class="docutils literal notranslate"><span class="pre">let</span></code> o <code class="docutils literal notranslate"><span class="pre">const</span></code> antes de ser usadas en un bloque el intérprete va a tiarar el error <code class="docutils literal notranslate"><span class="pre">ReferenceError</span></code> porque la variable no fue declarada y, por lo tanto, no puede ser referenciada.</p>
+<p>El hoisting es el proceso por el cual el compilador asigna la memoria de las declaracions de variables, clases y funciones al inicio del bloque de alcance. Esto hace que los nombres de las funciones y las clases puedan ser utilizados antes de escribir su definición dentro de un archivo (puede ser práctico poner las definciones después o al final). Pero si lo usamos para variables la lógica y la lectura del código se pueden complicar bastante.</p>
+<section id="id2">
+<h3>Enlaces<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Identifier">https://developer.mozilla.org/en-US/docs/Glossary/Identifier</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">https://developer.mozilla.org/en-US/docs/Glossary/Scope</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting">https://developer.mozilla.org/en-US/docs/Glossary/Hoisting</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#variable_hoisting">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#variable_hoisting</a></p>
+</section>
+</section>
+<section id="comentarios">
+<h2>Comentarios<a class="headerlink" href="#comentarios" title="Link to this heading">#</a></h2>
+<p>La sintáxis de los comentarios es la misma que C/C++ y Java. Existen los comentarios de línea y los comentarios multi línea.</p>
+<p>Los comentarios de línea comienzan con <code class="docutils literal notranslate"><span class="pre">//</span></code> y llegan hasta el final de la línea (<code class="docutils literal notranslate"><span class="pre">\n</span></code> o <code class="docutils literal notranslate"><span class="pre">\r\n</span></code>).</p>
+<p>Los comentarios multilínea comienzan con la secuencia de caracteres <code class="docutils literal notranslate"><span class="pre">/*</span></code> y terminan con la secuencia inversa <code class="docutils literal notranslate"><span class="pre">*/</span></code>. Los comentarios multilínea no pueden estar anidados, ver en el ejemplo.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Comentario de línea que comienza al principio de la línea.</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="p">;</span><span class="w">  </span><span class="c1">// Comentario de línea que comienza al final de la línea.</span>
+
+<span class="cm">/*</span>
+<span class="cm">    Comentario multilínea.</span>
+
+<span class="cm">    Es un comentario útil para escribir documentación o explicar un algoritmo.</span>
+<span class="cm">    Todo el texto es prosa y lo formatean ustedes. En este caso está indentado</span>
+<span class="cm">    por estilo con cuatro espacios. Es importante siempre respetar un estilo o</span>
+<span class="cm">    convención dentro de un mismo proyecto.</span>
+<span class="cm">*/</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Según estilos de programación pueden que vean que las líneas del medio</span>
+<span class="cm"> * comienzan con asteriscos, eso es una cuestión estética. Pero también pueden</span>
+<span class="cm"> * haber librerías que generen documentación automáticamente en base a los comentarios.</span>
+<span class="cm"> * En ese caso, la sintáxis interna en el comentario la definen las herramientas.</span>
+<span class="cm"> */</span>
+
+<span class="cm">/* Comentarios multilínea en una sola línea. */</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="cm">/* comentario mal usado, confunde */</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;:-(&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>Enlaces<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#comments">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#comments</a></p>
+</section>
+<section id="tipos-y-operadores">
+<h2>Tipos y operadores<a class="headerlink" href="#tipos-y-operadores" title="Link to this heading">#</a></h2>
+<p>Mucha de la sintaxis de JavaScript se tomó prestada de C, C++ y Java por lo que les va a resultar más fácil pensar en el lenguaje. Muchos de los operadores son iguales entre estos lenguajes, sin embargo, su significado a veces depende de los tipos de objeto sobre los cuales se apliquen. Hoy vamos a ver solo algúnos de los más básicos. Les queda la referencia en el enlace del final para ver otros.</p>
+<section id="sobre-numeros">
+<h3>Sobre números<a class="headerlink" href="#sobre-numeros" title="Link to this heading">#</a></h3>
+<p>Los operadores aritmétcos son los mismos que en C/C++ o Java, con la adición del operador de exponenciación <code class="docutils literal notranslate"><span class="pre">**</span></code>. No vamos a hacer mayores observacions pero hay que considerar que los números, por más que sean usados como enteros (<code class="docutils literal notranslate"><span class="pre">int</span></code> en java) <strong>se representan internamente en punto flotante</strong>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// add</span>
+<span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// sub</span>
+<span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// mul</span>
+<span class="mf">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// div</span>
+<span class="mf">2</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// mod</span>
+<span class="mf">2.5</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w">  </span><span class="c1">// mod, los números son flotantes, devuelve 0.5.</span>
+<span class="mf">2</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// pow</span>
+</pre></div>
+</div>
+<p>Para otras operaciones como la raíz, logaritmo, etc., se usa el objeto incorporado <code class="docutils literal notranslate"><span class="pre">Math</span></code> que funciona con <code class="docutils literal notranslate"><span class="pre">Number</span></code> y no con <code class="docutils literal notranslate"><span class="pre">BigInt</span></code>.</p>
+</section>
+<section id="sobre-cadenas">
+<h3>Sobre cadenas<a class="headerlink" href="#sobre-cadenas" title="Link to this heading">#</a></h3>
+<p>Las cadenas se pueden escribir con comillas simples o dobles. El operador sobre cadenas que tiene símbolo lexicográficos es la concatenación que se representa con el operador <code class="docutils literal notranslate"><span class="pre">+</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;mundo&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Por ejemplo, no se pueden restar o multiplicar cadenas, la expresiónd devuelve <code class="docutils literal notranslate"><span class="pre">NaN</span></code> en vez de tirar error (e.g. JavaScript).</p>
+<p>No existe el tipo caracter, un caracter es un string de un solo caracter. Esto es muy común también en otros lenguajes interpretados.</p>
+<p>Esiste un tipo de caden literal que se llama <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">plantilla de literales</a>, se escribe con <code class="docutils literal notranslate"><span class="pre">`</span></code> (acento grave, tilde invertida) en vez de comillas y permiete escribir cadenas en múltiples líneas e interpolar expresiones cuyo valor se agrega a la cadena.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="ow">typeof</span><span class="w"> </span><span class="sb">`string text`</span><span class="p">;</span><span class="w">  </span><span class="c1">// string</span>
+
+<span class="c1">// cadena multilínea</span>
+<span class="sb">`string text line 1</span>
+<span class="sb"> string text line 2`</span>
+
+
+<span class="c1">// plantilla literal</span>
+<span class="sb">`string text </span><span class="si">${</span><span class="nx">expression</span><span class="si">}</span><span class="sb"> string text`</span>
+</pre></div>
+</div>
+<p>Dentro de estas cadenas las expresiones se escriben dentro de la secuencia <code class="docutils literal notranslate"><span class="pre">${}</span></code>.</p>
+</section>
+<section id="coercion-de-tipos">
+<h3>Coerción de tipos<a class="headerlink" href="#coercion-de-tipos" title="Link to this heading">#</a></h3>
+<p>La <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Type_Conversion">coerción de tipos</a>, en otros lenguajes se llama casting o promoción, es la conversión automática de un valor de un tipo a otro según el operador que se use. Es muy común encontrar errores por coerción de tipos en algunas operaciones básicas entre <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#numbers_and_the_operator">cadenas y números</a>.</p>
+<p>Ejemplo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;9&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w">  </span><span class="c1">// Retorna el string &#39;95&#39;, el valor numérico se convirtió en cadena y se concatenó.</span>
+<span class="mf">5.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;9&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Retorna el string &#39;5.19&#39;, ídem.</span>
+<span class="s2">&quot;37&quot;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">7</span><span class="p">;</span><span class="w">  </span><span class="c1">// Retorna el número 259, el string se convirtió en el número que representa.</span>
+
+<span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Retorna el número 4, el valor cadena se convirtió en numérico.</span>
+<span class="s1">&#39;2&#39;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// Retorna -1, ídem.</span>
+<span class="s1">&#39;2.5&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// Retorna el número 1.25, ídem.</span>
+</pre></div>
+</div>
+<p>Cuando se hacen operaciones entre números y cadenas todos los operadores aritméticos hacen coerción a números salvo la adición. Con los operadores de comparación es al revés. Nada, esto es cosa JavaScript pero siempre hay que tener en cuenta de trabajar con los tipos adecuados.</p>
+<p>Este comportamiento del lenguaje que permite la conversión implícita entre tipos distintos que actúan como operandos de una misma expresión se lo asocia con la noción de <em>tipado débil</em> (weak typing). Este caso de conversión entre cadenas y números es paradigmático porque se consideran tipos no compatibles, en otros lenguajes existe la promoción automática entre tipos relacionados como son los números enteros y reales (int se convierte en float). Esto algo que se implementó por conveniencia en JavaScript pero puede generar más problemas conceptuales que beneficios prácticos y su uso no es recomendable (usar plantillas de cadenas en su lugar).</p>
+</section>
+<section id="igualdades">
+<h3>Igualdades<a class="headerlink" href="#igualdades" title="Link to this heading">#</a></h3>
+<p>Existen dos operadores de igualdad que se escriben <code class="docutils literal notranslate"><span class="pre">==</span></code> y <code class="docutils literal notranslate"><span class="pre">===</span></code>. El primero es el operador de <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality">igualdad</a> sin más. El segundo es el de <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality">igualdad estricta</a>  también llamado de identidad en otros lenguajes pero JavaScript siempre tiene sus propias reglas. Cada uno tiene su respectivo operador de desiguldad: <code class="docutils literal notranslate"><span class="pre">!==</span></code> y <code class="docutils literal notranslate"><span class="pre">!===</span></code>.</p>
+<p>El operador de igualdad aplica <em>coerción de tipos</em> y otras reglas que están especificadas en su elance. Por ejemplo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+<span class="mf">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+<span class="mf">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+<span class="mf">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="mf">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="mf">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">!!</span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// true, look at Logical NOT operator</span>
+<span class="mf">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">!!</span><span class="kc">undefined</span><span class="p">;</span><span class="w"> </span><span class="c1">// true, look at Logical NOT operator</span>
+<span class="kc">null</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">number1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">number2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+<span class="nx">number1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+<span class="nx">number1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">number2</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+</pre></div>
+</div>
+<p>El operador de igualdad estricta considera el tipo de los operandos y es más fácil de usar, tabién tiene sus reglas explicadas en el enlace:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;3&quot;</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="kc">true</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="kc">null</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="mf">3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// false</span>
+
+<span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+<span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="mf">3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+<span class="mf">3</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="kc">true</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+<span class="kc">true</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// false</span>
+<span class="kc">null</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+</pre></div>
+</div>
+<p>Los otros operadores de comparación (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>) se bansan en el operador de igualdad y aplican coernción de tipos. Las reglas de conversión están explicadas está explicadas en la documentación de <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Less_than">less than</a>.</p>
+<blockquote>
+<div><p>Moraleja: Siempre hay que tener en cuenta qué posibles tipos de datos vamos a estar comparando en una expresión. Que los tipos de las variables sean dinámicos no quiere decir que se deban perder de vista los tipos.</p>
+</div></blockquote>
+</section>
+<section id="valores-interpretados-como-falso-falsy-value">
+<h3>Valores interpretados como falso (falsy value)<a class="headerlink" href="#valores-interpretados-como-falso-falsy-value" title="Link to this heading">#</a></h3>
+<p>Existe un conjunto de valores que son <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">considerados falsos</a> cuando como resultado de una expresión buleana. Por ejemplo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Undefined es falso */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Cero (positivo o negativo) es falso */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Una cadena vacía es falso */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* null es falso */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="kc">NaN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* NaN es falso */</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Los operadores de lógica booleana (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">||</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>) los vemos luego.</p>
+</section>
+<section id="id4">
+<h3>Enlaces<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table</a></p>
+</section>
+</section>
+<section id="funciones">
+<h2>Funciones<a class="headerlink" href="#funciones" title="Link to this heading">#</a></h2>
+<p>Las funciones se usan para varias cosas distintas en JavaScript como funciones, métodos, objetos y constructores de objetos. En esta clase solo veremos las funciones como tales, en el sentido más común que se aplica en otros lenguajes de programación.</p>
+<p>Hay varias maneras de definir funciones pero vamos a utilizar solo la más básica por ahora que consiste en usar la palabra reservada <code class="docutils literal notranslate"><span class="pre">function</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">nombreDeLaFuncion</span><span class="p">(</span><span class="nx">argumento</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Cuerpo de la función entre {}.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Las funciónes, utilizadas como tales, tienen que retornar un valor, para eso se usa la palabra reservada <code class="docutils literal notranslate"><span class="pre">return</span></code>. Funciona igual que en C/C++ y Java.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">duplica</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">duplica</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Si hay más de un argumento estos se definen como una lista separada por comas.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">multiplica</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">multiplica</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="funciones-como-objetos">
+<h3>Funciones como objetos<a class="headerlink" href="#funciones-como-objetos" title="Link to this heading">#</a></h3>
+<p>Las funciones en JavaScript son objetos y se pueden asignar a variables.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">suma</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">mas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">suma</span><span class="p">;</span>
+<span class="nx">mas</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">  </span><span class="c1">// se llama a la función `suma` almacenada en la variable `mas`.</span>
+</pre></div>
+</div>
+<p>Como todo objeto, las funciones tienen propiedades. Por ejemplo, la propiedad <code class="docutils literal notranslate"><span class="pre">name</span></code> de un objeto función devuelve el nombre con el que fue declarada:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">mas</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span><span class="w">  </span><span class="c1">// devuelve la cadena `&#39;suma``.</span>
+</pre></div>
+</div>
+<p>Incluso las funciones se pueden definir sin nombre, algo que en otros lenguajes se conoce como <em>funciones anónimas</em> o <em>funciones lambda</em> y ser asignadas a variables o pasadas como argumento a otras funciones. La propiedad <code class="docutils literal notranslate"><span class="pre">name</span></code> de la función devuelve el nombre de la primera variable a la que se asignó la función.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">otraSuma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="p">}</span>
+<span class="nx">otraSuma</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">otraSuma</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Luego vamos a ver más sobre objetos.</p>
+</section>
+<section id="funcion-flecha">
+<h3>Función flecha<a class="headerlink" href="#funcion-flecha" title="Link to this heading">#</a></h3>
+<p>En JavaScript existe otro tipo de función llamada flecha. Las funciones flecha también equivalentes a las <em>funciones anónimas</em> o <em>lambda</em> en otros lenguajes porque se declaran sin nombre y se asignan a variables o se pasan como argumentos a otras funciones. El nombre de este tipo de función viene del símbolo que se utiliza para definirlas: <code class="docutils literal notranslate"><span class="pre">=&gt;</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">sumaFlecha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="p">};</span>
+
+<span class="nx">sumaFlecha</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">sumaFlecha</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span><span class="w"> </span><span class="c1">// devuelve el nombre de la variable a la cuál fue asignada inicialmente.</span>
+</pre></div>
+</div>
+<p>En el código de arriba, la función se define como lista de parámetros entre paréntesis, el cuerpo de la función entre llaves y el símbolo flecha uniendo ambambas partes: <code class="docutils literal notranslate"><span class="pre">parámetros</span> <span class="pre">=&gt;</span> <span class="pre">cuerpo</span></code>.</p>
+<p>En relación a la POO, las funciones flecha no se comportan de la misma manera que las funciones comunes (declaradas con la palabra reservada <code class="docutils literal notranslate"><span class="pre">function</span></code>). Esto tiene que ver con las reglas de alcance de las variables y la palabra reservada <code class="docutils literal notranslate"><span class="pre">this</span></code>, porque en JavaScript las funciones comunes se usan para crear objetos que es algo que comentaremos más adelantes pero no vamos a usar.</p>
+</section>
+</section>
+<section id="referencia-p5-js">
+<h2>Referencia p5.js<a class="headerlink" href="#referencia-p5-js" title="Link to this heading">#</a></h2>
+<p>Más allá de los detalles que vimos de JavaScript, en la referencia online de p5.js hay una sección que se llama <a class="reference external" href="https://p5js.org/reference/#group-Foundation">Foundation</a> que lista los tipos de datos básicos que usa la librería y las estructuras de control que se usan habitualmente.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa01/ch01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="config-vsc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Entorno de desarrollo</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="intro-p5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introducción a p5.js</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos-primitivos">Tipos de datos primitivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comentarios">Comentarios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Enlaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-y-operadores">Tipos y operadores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sobre-numeros">Sobre números</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sobre-cadenas">Sobre cadenas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercion-de-tipos">Coerción de tipos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#igualdades">Igualdades</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-interpretados-como-falso-falsy-value">Valores interpretados como falso (falsy value)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">Funciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-como-objetos">Funciones como objetos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-flecha">Función flecha</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencia-p5-js">Referencia p5.js</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

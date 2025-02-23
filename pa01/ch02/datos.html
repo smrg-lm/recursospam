@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Estructuras de datos &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa01/ch02/datos';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Estructuras de control" href="control.html" />
+    <link rel="prev" title="Estructuras de datos y de control" href="estructuras-dyc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="estructuras-dyc.html">Estructuras de datos y de control</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa01/ch02/datos.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa01/ch02/datos.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Estructuras de datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-primitivos">Tipos primitivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos">Objetos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos-literales">Objetos literales</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arreglos">Arreglos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-utiles">Métodos útiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convertir-cadenas-en-arreglos-y-viceversa">Convertir cadenas en arreglos y viceversa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjuntos">Conjuntos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios-map">Diccionarios (Map)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json">JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-javascript-a-json-y-viceversa">Conversión JavaScript a JSON y viceversa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="estructuras-de-datos">
+<h1>Estructuras de datos<a class="headerlink" href="#estructuras-de-datos" title="Link to this heading">#</a></h1>
+<p>Descarga la <a class="reference internal" href="#./ejemplos.zip"><span class="xref myst">Carpeta de Ejemplos</span></a></p>
+<section id="tipos-primitivos">
+<h2>Tipos primitivos<a class="headerlink" href="#tipos-primitivos" title="Link to this heading">#</a></h2>
+<p>Los tipos de datos primitivos (<code class="docutils literal notranslate"><span class="pre">null</span></code>, <code class="docutils literal notranslate"><span class="pre">undefined</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">bigint</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code> y <code class="docutils literal notranslate"><span class="pre">symbol</span></code>) de JavaScript son inmutables, eso quiere decir que no se les puede cambiar el valor o sus propiedades una vez definidos. El único tipo mutable en JavaScript es <code class="docutils literal notranslate"><span class="pre">Object</span></code>, del cual deriban casi todos los demás tipos de datos (funciones, listas, diccionarios, etc.).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Las funciones son en sí objetos, tienen propiedades y se pueden pasar como valor.</p>
+</div>
+<p>Ejemplo: cuado se define una cadena no se le pueden cambiar sus caracteres, al modificar la cadena se crea un nuevo objeto cadena. El método <code class="docutils literal notranslate"><span class="pre">replace</span></code> de <code class="docutils literal notranslate"><span class="pre">String</span></code> busca y reemplaza una secuencia de caracteres y devuelve un nuevo objeto si econtró la secuencia a reemplazar pero en ningún caso modifica el objeto original. Una cadena no es un arreglo de caracteres como en C/C++ o Java.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mi cadena&#39;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">c1</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;tu&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Imprime &#39;mi cadena&#39;, no modificó el original.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c2</span><span class="p">);</span><span class="w">  </span><span class="c1">// Imprime &#39;tu cadena&#39;, el nuevo objeto cadena.</span>
+</pre></div>
+</div>
+</section>
+<section id="objetos">
+<h2>Objetos<a class="headerlink" href="#objetos" title="Link to this heading">#</a></h2>
+<p>Los objetos son estructuras que relacionan datos y comportamientos. Los datos de un objeto pueden variar y definen su estado interno, estos pueden ser tipos primitivos u otros objetos. Los comportamientos son las operaciones que se pueden efectuar sobre el estado de un objeto o en su interacción con otros objetos, estos están representados por funciones asociadas a los objetos que tienen acceso a sus estado interno (mediante <code class="docutils literal notranslate"><span class="pre">this</span></code>).</p>
+<p>En JavaScript, tanto los datos como las funciones asociadas se llaman <strong>propiedades</strong>. Entonces, un objeto es una colección de propiedades que se representan como pares llave-valor. Las llaves son los <em>nombres</em> con los que se acceden las propiedades y el <em>valor</em> es el dato o función que se está accediendo.</p>
+<section id="objetos-literales">
+<h3>Objetos literales<a class="headerlink" href="#objetos-literales" title="Link to this heading">#</a></h3>
+<p>Definición: Un literal es un valor que tiene representación sintáctica integrada en el lenguaje: <code class="docutils literal notranslate"><span class="pre">123</span></code>, <code class="docutils literal notranslate"><span class="pre">'cadena'</span></code>, <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Un <em>objeto literal</em> se define entre llaves <code class="docutils literal notranslate"><span class="pre">{}</span></code> que contienen una lista de nombres y valores separados por <code class="docutils literal notranslate"><span class="pre">:</span></code> de la siguiente manera:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">nombre1</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;valor1&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nombre2</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;valor2&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nombre3</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Las funciones también pueden ser valores:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">nombre1</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dato1&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nombre2</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dato2&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nombre3</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">123</span><span class="p">;</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// function expression, no tiene nombre, anónima.</span>
+<span class="w">    </span><span class="nx">nombre4</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">456</span><span class="p">;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">etc</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;etc&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Las propiedades de los objetos se acceden con el operador <code class="docutils literal notranslate"><span class="pre">.</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">nombre1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">nombre2</span><span class="p">;</span><span class="w">  </span><span class="c1">// &#39;dato1dato2&#39;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">nombre3</span><span class="p">();</span><span class="w">  </span><span class="c1">// 123</span>
+</pre></div>
+</div>
+<p>Los nombres de las propiedades también pueden ser cadenas o números:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;nombre1&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;valor1&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;nombre2&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;valor2&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="mf">3</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;valor3&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="mf">4</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;valor4&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Las propiedades también se pueden acceder usando la notación de corchetes <code class="docutils literal notranslate"><span class="pre">obj['nombre']</span></code>. Cuando los nombres no son identificadores válidos (regla de nombres de las variables) no se pueden acceder con el operador <code class="docutils literal notranslate"><span class="pre">.</span></code> y se deben acceder con corchetes:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">nombre1</span><span class="p">;</span><span class="w">  </span><span class="c1">// &#39;valor1&#39;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="s1">&#39;nombre1&#39;</span><span class="p">];</span><span class="w">  </span><span class="c1">// &#39;valor1&#39;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="mf">3</span><span class="p">];</span><span class="w">  </span><span class="c1">// &#39;valor3&#39;</span>
+</pre></div>
+</div>
+<p>Esto es así porque <strong>los objetos son diccionarios como estructura de datos</strong> con funcionalidad agregada. Parte de esta funcionalidad agregada son las palabras clave <code class="docutils literal notranslate"><span class="pre">this</span></code> y <code class="docutils literal notranslate"><span class="pre">super</span></code> que se suelen usar en la programación orientada a objetos. La forma sintáctica de definir métodos en objetos literales es la siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">metodo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// Se escribe el nombre con paréntesis y llaves.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Aún no vamos a desarrollar la programación orientada a objetos. Esto es solo una introducción a las estructuras de datos.</p>
+</div>
+</section>
+</section>
+<section id="arreglos">
+<h2>Arreglos<a class="headerlink" href="#arreglos" title="Link to this heading">#</a></h2>
+<p>Los arreglos en JavaScript son listas de elementos que pueden ser del mismo tipo o de distintos tipos. Además, son de logitud variable, no es necesario definir la capaciad de antemano y se va incrementando automáticamente a medida que agregamos valores. Esto difiere de otros lenguajes como C/C++ o Java.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Existen arrays con tipos homogéneos que no vamos a ver por el momento (ej. Int32Array, Float32Array).</p>
+</div>
+<p>Los arreglos literales se crean con corchetes como en otros lenguajes:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;papa&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;batata&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lechuga&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nb">Object</span><span class="p">(),</span><span class="w"> </span><span class="kc">undefined</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lista</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Los índices de acceso a los elementos son en base cero y se usan corchetes (igual que C/C++ y Java).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lista</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">  </span><span class="c1">// &#39;papa&#39;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lista</span><span class="p">[</span><span class="mf">3</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 3.141592653589793</span>
+</pre></div>
+</div>
+<section id="metodos-utiles">
+<h3>Métodos útiles<a class="headerlink" href="#metodos-utiles" title="Link to this heading">#</a></h3>
+<p>La cantidad de elementos se puede averiguar con la propiedad <code class="docutils literal notranslate"><span class="pre">length</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lista</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span><span class="w">  </span><span class="c1">// 7</span>
+</pre></div>
+</div>
+<p>Los arreglos son de logitud variable, se les puede agregar elementos con el método <code class="docutils literal notranslate"><span class="pre">push</span></code> al final y <code class="docutils literal notranslate"><span class="pre">unshift</span></code> al comienzo, se les puede remover elementos con <code class="docutils literal notranslate"><span class="pre">pop</span></code> desde el final o <code class="docutils literal notranslate"><span class="pre">shift</span></code> desde el comienzo.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lista</span><span class="p">.</span><span class="nx">pop</span><span class="p">());</span><span class="w">  </span><span class="c1">// Saca el último elemento y lo devuelve como valor de retorno.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lista</span><span class="p">.</span><span class="nx">shift</span><span class="p">());</span><span class="w">  </span><span class="c1">// Saca el primer elemento y lo devuelve como valor de retorno.</span>
+<span class="nx">lista</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;último&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Agrega un nuevo elemento al final y devuelve la nueva logitud como valor de retorno.</span>
+<span class="nx">lista</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">&#39;primero&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Ídem al principio.</span>
+</pre></div>
+</div>
+<p>Utilizando los métodos <code class="docutils literal notranslate"><span class="pre">push</span></code> y <code class="docutils literal notranslate"><span class="pre">pop</span></code> los arreglos se pueden usar como pilas.</p>
+<p>Se pueden remover elementos del medio averiguando el índice con <code class="docutils literal notranslate"><span class="pre">indexOf</span></code> y usándolo con <code class="docutils literal notranslate"><span class="pre">splice</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Devuelve la posición del elemento primer elemento igual o -1 si no está en la lista.</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Remueve solo un elemento a partir del índice i.</span>
+</pre></div>
+</div>
+<p>Las matrices son arreglos de arreglos:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">]];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">matrix</span><span class="p">[</span><span class="mf">0</span><span class="p">][</span><span class="mf">1</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">matrix</span><span class="p">[</span><span class="mf">2</span><span class="p">][</span><span class="mf">1</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 5</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">matrix</span><span class="p">[</span><span class="mf">3</span><span class="p">][</span><span class="mf">1</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 8</span>
+</pre></div>
+</div>
+</section>
+<section id="convertir-cadenas-en-arreglos-y-viceversa">
+<h3>Convertir cadenas en arreglos y viceversa<a class="headerlink" href="#convertir-cadenas-en-arreglos-y-viceversa" title="Link to this heading">#</a></h3>
+<p>El método <code class="docutils literal notranslate"><span class="pre">split</span></code> de <code class="docutils literal notranslate"><span class="pre">String</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">cad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hola&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cad</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">));</span><span class="w">  </span><span class="c1">// [ &#39;h&#39;, &#39;o&#39;, &#39;l&#39;, &#39;a&#39; ]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cad</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">));</span><span class="w">  </span><span class="c1">// [ &#39;h&#39;, &#39;la ]</span>
+</pre></div>
+</div>
+<p>El método <code class="docutils literal notranslate"><span class="pre">join</span></code> de <code class="docutils literal notranslate"><span class="pre">Array</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;u&#39;</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &#39;chau&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conjuntos">
+<h2>Conjuntos<a class="headerlink" href="#conjuntos" title="Link to this heading">#</a></h2>
+<p>Los conjuntos con colecciones de objetos que no se pueden repetir, a diferencia de los arreglos. Se crean con el objeto <code class="docutils literal notranslate"><span class="pre">Set</span></code>. Para crear un objeto a partir de una clase se debe usar el operador <code class="docutils literal notranslate"><span class="pre">new</span></code> que construye al objeto.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">conj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">([</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ocho&#39;</span><span class="p">]);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conj</span><span class="p">);</span><span class="w">  </span><span class="c1">// Set { &#39;uno&#39;, 2, &#39;ocho&#39; }</span>
+</pre></div>
+</div>
+<p>Los valores se pueden agregar inicializando con un arreglo o luego con el método add y los objetos del conjunto se guardan en el orden de inserción. Si a un conjunto le queremos agregar un valor duplicado no hace nada, lo ignora por ya está dentro.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">conj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">();</span>
+
+<span class="nx">conj</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">);</span>
+<span class="nx">conj</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">conj</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;ocho&#39;</span><span class="p">);</span>
+<span class="nx">conj</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// No hace nada, la cadena &#39;uno&#39; ya está en el conjunto.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conj</span><span class="p">);</span><span class="w">  </span><span class="c1">// Set { &#39;uno&#39;, 2, &#39;ocho&#39; }</span>
+
+<span class="nx">conj</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Los elementos se puede quitar con delete.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conj</span><span class="p">);</span><span class="w">  </span><span class="c1">// Set { 2, &#39;ocho&#39; }</span>
+</pre></div>
+</div>
+<p>Se puede preguntar si un objeto/valor pertenece al conjunto con el método <code class="docutils literal notranslate"><span class="pre">has</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">conj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">([</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ocho&#39;</span><span class="p">]);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conj</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">));</span><span class="w">  </span><span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conj</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="mf">8</span><span class="p">));</span><span class="w">  </span><span class="c1">// false</span>
+</pre></div>
+</div>
+<p>Lamentablemente en la librería estándar no etán definidas las operaciones entre conjuntos (unión, intersección, diferencia, etc.) pero <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#implementing_basic_set_operations">en este enlace</a> hay un ejemplo de sus implementaciones.</p>
+</section>
+<section id="diccionarios-map">
+<h2>Diccionarios (Map)<a class="headerlink" href="#diccionarios-map" title="Link to this heading">#</a></h2>
+<p>Los diccionarios son objetos que contienen llaves que referencian a valores, como los diccionarios de palabras contienen palabras que apuntan a direcciones. Cada llave es única. En JavaScript a los diccionarios de les llama <code class="docutils literal notranslate"><span class="pre">Map</span></code>, supongo que porque hace un <em>mapping</em> entre llave y valor mediante una <em>tabla de hash</em> que deine una estructura que se llama <em>array asociativo</em>.</p>
+<p>Los <em>map</em> son similares a los objetos, asocian llaves con valore y nos sirven para guardar cosas de manera ordenada, pero los objetos tienen funcionalidad y propiedades agregadas (por ejemplo se le pueden crear métodos y tienen prototipos y toda la lógica de esas cosas). Además, a diferencia de los objetos <code class="docutils literal notranslate"><span class="pre">Map</span></code> las llaves pueden ser cualquer tipo de objeto (en los objetos solo pueden ser cadenas o síbmolos). Muchas veces en conveniente usar objetos literales en ves de <code class="docutils literal notranslate"><span class="pre">Map</span></code> porque la sintáxis es más cómoda.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">dic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">([[</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;dos&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;tres&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]]);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dic</span><span class="p">)</span><span class="w">  </span><span class="c1">// Map { &#39;uno&#39; =&gt; 1, &#39;dos&#39; =&gt; 2, &#39;tres&#39; =&gt; 3 }</span>
+</pre></div>
+</div>
+<p>Las llaves y los valores se pueden agregar individualmente con el método <code class="docutils literal notranslate"><span class="pre">set</span></code>. Lo mismo se puede hacer para que devuelva el valor de una llave con <code class="docutils literal notranslate"><span class="pre">get</span></code> o corchetes.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">dic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+<span class="nx">dic</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">dic</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dos&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dic</span><span class="p">)</span><span class="w">  </span><span class="c1">// Map { &#39;uno&#39; =&gt; 1, 2: &#39;dos&#39; }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dic</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">))</span><span class="w">  </span><span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dic</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w">  </span><span class="c1">// &#39;dos&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No se debe usar la notación de corchetes <code class="docutils literal notranslate"><span class="pre">dict['llave']</span></code> porque estaríamos accediendo a la propiedad del objeto <code class="docutils literal notranslate"><span class="pre">Map</span></code> y no a sus llaves como estructura de datos.</p>
+</div>
+<p>Se puede preguntar por una llave con <code class="docutils literal notranslate"><span class="pre">has</span></code> y borrarla con <code class="docutils literal notranslate"><span class="pre">delete</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">dic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+
+<span class="nx">dic</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">dic</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dos&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dic</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">));</span><span class="w">  </span><span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dic</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;dos&#39;</span><span class="p">));</span><span class="w">  </span><span class="c1">// false</span>
+
+<span class="nx">dic</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">);</span>
+<span class="nx">dic</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dic</span><span class="p">)</span><span class="w">  </span><span class="c1">// Map { }</span>
+</pre></div>
+</div>
+<p>Al iguale que en los conjuntos el contenido se guarda en orden de inserción, esto es importante cuando se usan estructuras iterativas.</p>
+</section>
+<section id="json">
+<h2>JSON<a class="headerlink" href="#json" title="Link to this heading">#</a></h2>
+<p>La voz <em>JSON</em> (se pronuncia algo así como <em>yeyson</em>) es el acrónimo de <strong>J</strong>ava<strong>S</strong>ctip <strong>O</strong>bject <strong>N</strong>otation. Es una representación, en formato texto, estándar de estructuras de datos basada en la notación de objetos literales de JavaScript.</p>
+<p>Los datos escritos en formato JSON se guardan en archivos con la extensión <code class="docutils literal notranslate"><span class="pre">.json</span></code>. Una cadena de caracteres que representa una estructura de datos en formato JSON se suele utilizar como el dato a transmitir entre aplicaciones web. Una aplicación lo codifica a partir de un objeto JS y lo envía a otra que lo recibe y lo decodifica como ojeto JS.</p>
+<p>Utiliza un conjunto más limitado de <em>tipos</em>. En realidad es todo texto pero cuando se parsea se convierte en un conjunto limitado de objetos JavaScript: objetos literales con llaves (que se escriben con string de comilla doble) y valores separados por dos puntos y coma (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;a&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;b&quot;:</span> <span class="pre">2</span> <span class="pre">}</span></code>), arrays (<code class="docutils literal notranslate"><span class="pre">[]</span></code>), strings que se escriben con comillas dobles (<code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span></code>), buleanos (<code class="docutils literal notranslate"><span class="pre">ture</span></code> o <code class="docutils literal notranslate"><span class="pre">false</span></code>), y números (<code class="docutils literal notranslate"><span class="pre">123</span></code>, <code class="docutils literal notranslate"><span class="pre">1e-2</span></code>).</p>
+<p>Los objetos y los arrays pueden contener otros objetos y arrays. El siguiente ejemplo es un objeto que contiene valores, listas y otros objetos:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;campo uno&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;campo dos&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;array&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;objeto&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cuadrado&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;buleano&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Una cadena JSON puede ser un array de valores y objetos:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;b&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;c&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;d&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Un número o una cadena también puede ser una cadena JSON válida, por ejemplo un archivo JSON que contiene lo siguiente:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;soy un dato JSON que consta de solo una cadena que contiene palabras&quot;</span>
+</pre></div>
+</div>
+<p>O un archivo que contiene solo un número:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="mf">123.456</span>
+</pre></div>
+</div>
+<section id="conversion-javascript-a-json-y-viceversa">
+<h3>Conversión JavaScript a JSON y viceversa<a class="headerlink" href="#conversion-javascript-a-json-y-viceversa" title="Link to this heading">#</a></h3>
+<p>JavaScript tiene incorporado el objeto <code class="docutils literal notranslate"><span class="pre">JSON</span></code> (similar al objeto <code class="docutils literal notranslate"><span class="pre">Math</span></code>) que provee métodos para esto. Solo tiene dos <code class="docutils literal notranslate"><span class="pre">stringify</span></code> y <code class="docutils literal notranslate"><span class="pre">parse</span></code>.</p>
+<p>El método <code class="docutils literal notranslate"><span class="pre">stringify</span></code> convierte objetos JavaScript en cadenas JSON.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Objeto JavaScript</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">lista</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]</span><span class="w"> </span><span class="p">};</span>
+<span class="c1">// Cadena JSON</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="c1">// Test</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span><span class="w">  </span><span class="c1">// {&quot;x&quot;:0,&quot;y&quot;:0,&quot;lista&quot;:[1,2,3]} </span>
+</pre></div>
+</div>
+<p>El método <code class="docutils literal notranslate"><span class="pre">parse</span></code> parsea cadenas json y las convierte en objetos JavaScript:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Cadena JSON</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`{ &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;lista&quot;: [1, 2, 3] }`</span>
+<span class="c1">// Objeto JavaScript</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+<span class="c1">// Test</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span><span class="w">  </span><span class="c1">// { x: 0, y: 0, lista: [ 1, 2, 3 ] }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span><span class="w">  </span><span class="c1">// 0</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">lista</span><span class="p">[</span><span class="mf">0</span><span class="p">])</span><span class="w">  </span><span class="c1">// 1</span>
+</pre></div>
+</div>
+<p>No hay más, es solo eso.</p>
+<p>En futuros ejemplos vamos a ver que <em>p5.js</em> convenientemente tiene funciones llamadas <code class="docutils literal notranslate"><span class="pre">loadJSON</span></code> y <code class="docutils literal notranslate"><span class="pre">saveJSON</span></code> para trabajar con <em>JSON</em>.</p>
+</section>
+</section>
+<section id="enlaces">
+<h2>Enlaces<a class="headerlink" href="#enlaces" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#object_literals">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#object_literals</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON</a></p>
+<p>Recomendación: si quieren estudiar todo el lenguaje más en profundidad pueden seguir las muy buenas guías didácticas que hay en: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript#modules">https://developer.mozilla.org/en-US/docs/Learn/JavaScript#modules</a> y me pueden traer preguntas si quieren.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa01/ch02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="estructuras-dyc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Estructuras de datos y de control</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="control.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Estructuras de control</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-primitivos">Tipos primitivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos">Objetos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos-literales">Objetos literales</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arreglos">Arreglos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-utiles">Métodos útiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convertir-cadenas-en-arreglos-y-viceversa">Convertir cadenas en arreglos y viceversa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjuntos">Conjuntos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios-map">Diccionarios (Map)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json">JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-javascript-a-json-y-viceversa">Conversión JavaScript a JSON y viceversa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

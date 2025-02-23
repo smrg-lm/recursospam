@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Audio Digital &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa01/ch07/audio-digital';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Librería integrada p5.sound.js" href="p5sonido.html" />
+    <link rel="prev" title="Sonido" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Sonido</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa01/ch07/audio-digital.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa01/ch07/audio-digital.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Audio Digital</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frecuencia-y-periodo">Frecuencia y Período</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amplitud">Amplitud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amplitud-para-nosotres-en-el-audio-digital">Amplitud (para nosotres en el audio digital)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fase">Fase</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-de-la-senal-digital">Parámetros de la Señal Digital</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-de-audio">Archivos de Audio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representacion-espectral">Representación Espectral</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="audio-digital">
+<h1>Audio Digital<a class="headerlink" href="#audio-digital" title="Link to this heading">#</a></h1>
+<p>En esta sección se da una descripción muy breve de los conceptos y parámetros que vamos a usar para trabajar con sonido y poder interpretar los datos del sonido como imagen.</p>
+<section id="frecuencia-y-periodo">
+<h2>Frecuencia y Período<a class="headerlink" href="#frecuencia-y-periodo" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>La <strong>frecuencia</strong> de algo es la cantidad de veces que ese algo sucede por unidad de tiempo.</p></li>
+<li><p>La <strong>frecuencia</strong> del colectivo es la cantidad de veces que pasa por día. Lo que sucede es el paso del un colectivo y la unidad es el día.</p></li>
+<li><p>En audio, la <strong>frecuencia</strong> refiere a la cantidad de veces que algo se sucede por segundo, a esta unidad de medida se la denomina Hertz, también se la refiere como ciclos por segundo.</p></li>
+<li><p><strong>Frecuencias famosas</strong>: Frecuencia de muestreo (Sample Rate, en inglés), Frecuencia de Nyquist, frecuencia de una señal periódica (las que definen altura).</p></li>
+<li><p>El <strong>período</strong> es la inversa de la frecuencia, no es un parámetro distinto sino otra forma de medir lo mismo. En vez de medir la cantidad de veces que algo sucede por unidad de tiempo, medimos la duración de ese algo. Mientras menor sea la duración más veces va a entrar por unidad de tiempo, mientras mayor sea menos veces.</p></li>
+</ul>
+</section>
+<section id="amplitud">
+<h2>Amplitud<a class="headerlink" href="#amplitud" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>La <strong>amplitud</strong> es la distancia que recorre un movimiento con respecto a un punto de referencia o eje, a mayor distanciamiento del eje mayor amplitud.</p></li>
+<li><p>En audio no interesa medir la <strong>distancia</strong> que se desplazan las moléculas del aire, en vaivén con respecto a su punto de reposo, para generar ondas sonoras. Esto refleja la energía que se transmite en el medio.</p></li>
+<li><p>Esta <strong>energía</strong>, además de ser medida como amplitud se la suele medir como <strong>presión</strong>. La presión es la fuerza aplica sobre un área, por ejemplo el tímpano o la membrana de un micrófono.</p></li>
+<li><p>La <strong>presión</strong> se mide en Pascales, y acá se complica, los Pascales son una unidad derivada, Newtons por metro cuadrado, el Newton también es una unidad derivada que define “la cantidad de fuerza aplicada durante un segundo a una masa de un kilogramo para que esta adquiera la velocidad de un metro por segundo respecto a la velocidad colineal que tenía previamente a la aplicación de la fuerza” (fuente: Wikipedia).</p></li>
+</ul>
+</section>
+<section id="amplitud-para-nosotres-en-el-audio-digital">
+<h2>Amplitud (para nosotres en el audio digital)<a class="headerlink" href="#amplitud-para-nosotres-en-el-audio-digital" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Se mide como la distancia que se aleja el valor de una muestra con respecto al cero, que es el valor de reposo (silencio).</p></li>
+<li><p>La <strong>amplitud</strong> se puede representar de manera <strong>normalizada</strong>, entre -1 y 1, siendo los extremos el mínimo y máximo posible (en rango) para una señal.</p></li>
+<li><p>También se puede medir en <strong>decibelios</strong> (dB), la décima parte de un Bell, que además es unidad en <strong>escala logarítmica</strong>.</p></li>
+<li><p>En <strong>dB FS</strong> (full scale) el máximo posible es cero y el mínimo es -infinito (silencio), con representación discreta en punto flotante.</p></li>
+</ul>
+</section>
+<section id="fase">
+<h2>Fase<a class="headerlink" href="#fase" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>La <strong>fase</strong> ya la estamos usando para los movimientos circulares, es la posición dentro de un giro. En los sonidos periódicos es la posición dentro de un ciclo.</p></li>
+</ul>
+</section>
+<section id="parametros-de-la-senal-digital">
+<h2>Parámetros de la Señal Digital<a class="headerlink" href="#parametros-de-la-senal-digital" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Frecuencia de Muestreo</strong>: Define la cantidad de muestras que se toman de la variaciones de voltaje por segundo. Esto define la máxima frecuencia representable que equivale a la frecuencia de muestreo dividida por dos y se llama frecuencia de Nyquist.</p></li>
+<li><p><strong>Cuantización</strong>: De cada muestra de voltaje que se toma se mide su amplitud y se le asigna un número binario. La cantidad de variaciones de amplitud representables va a estar definida por la resolución en bits (lo mismo que sucede con la profundidad del color pero aplicado en otro dominio).</p></li>
+</ul>
+</section>
+<section id="archivos-de-audio">
+<h2>Archivos de Audio<a class="headerlink" href="#archivos-de-audio" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Los <strong>formatos</strong> de archivos de audio pueden ser <strong>con o sin compresión</strong>.</p></li>
+<li><p>Los formatos <strong>sin compresión</strong> representan cada muestra con la resolución original (la del ADC si no se convierte). Por ejemplo WAV o AIFF.</p></li>
+<li><p>Los formatos <strong>con compresión</strong> pueden ser con o sin pérdida. Los formatos con pérdida no reconstruyen la señal original tal cual era sino una versión simplificada a los fines de la compresión, se pierde información y no se puede reconstruir el original. Por ejemplo MP3 u OGG-Vorbis.</p></li>
+<li><p>Todos los tipos de archivos de audio <strong>son descomprimidos para se procesados</strong>. La información que nos interesa es la <strong>frecuencia de muestreo</strong>, y el <strong>tipo de dato</strong> que se usa para representar cada <strong>muestra</strong>, por lo general float.</p></li>
+<li><p>Los archivos de audio guardan las señales de audio en <strong>canales</strong>. Los archivos mono tienen un solo canal, los estéreo tienen dos, y pueden haber archivos con mayor número de canales.</p></li>
+<li><p>Los <strong>procesamientos básicos</strong> que podemos aplicar sobre los archivos de audio son: cambiarle la amplitud, cambiarle la velocidad de reproducción (afecta el tiempo y la altura), si el archivo es estéreo o se convierte en estéreo a la salida podemos controlar el paneo (la posición izquierda-derecha del sonido).</p></li>
+<li><p>Se pueden <strong>mezclar</strong> varios archivos de audio <strong>sumando</strong> las señales por canal (superpone sonidos).</p></li>
+<li><p>Con <strong>algoritmos de procesamiento</strong> en tiempo real se pueden cambiar otras cualidades del sonido como la <strong>ecualización</strong> (balance espectral), agregar <strong>reverberación</strong>, <strong>delays</strong>, y demás.</p></li>
+</ul>
+</section>
+<section id="representacion-espectral">
+<h2>Representación Espectral<a class="headerlink" href="#representacion-espectral" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>La <strong>transformada de Fourier</strong> es un procedimiento matemático que descompone las señales periódicas complejas en <strong>sumas de señales simples</strong> (sinusoidales) representadas como <strong>amplitud y fase por banda</strong>.</p></li>
+<li><p>En el ámbito digital se utiliza la <strong>transformada discreta de Fourier</strong> (TDF), las señales ya no se consideran continuas, algunas propiedades matemáticas cambian.</p></li>
+<li><p><strong>Transformada Rápida de Fourier</strong> (FFT, por su acrónimo en inglés) es un algoritmo que calcula de forma más rápida la TDF para valores de ventana que son potencias de dos.</p></li>
+<li><p>Los <strong>parámetros de la FFT</strong> son el <strong>tamaño de la ventana</strong> de análisis y la <strong>frecuencia de análisis</strong> que se define como <strong>sr/ventana</strong>.</p></li>
+<li><p>Mientras mayor sea el <strong>tamaño de la ventana</strong>, menor será la frecuencia de análisis, los parciales armónicos de esa frecuencia van a estar más cerca y por lo tanto vamos a tener <strong>mayor cantidad de bandas</strong> de análisis (mayor resolución espectral). Al achicar la ventana de análisis vamos a temer <strong>menos bandas</strong> (menor resolución espectral).</p></li>
+<li><p>La <strong>FFT</strong> es útil para obtener cualidades del sonido que no se pueden deducir de la forma de onda.</p></li>
+<li><p>Los <strong>datos espectrales</strong> se utilizan en conjunto con los datos temporales y con ellos se pueden realizar tipos de análisis de características particulares.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa01/ch07"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sonido</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="p5sonido.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Librería integrada p5.sound.js</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frecuencia-y-periodo">Frecuencia y Período</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amplitud">Amplitud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amplitud-para-nosotres-en-el-audio-digital">Amplitud (para nosotres en el audio digital)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fase">Fase</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-de-la-senal-digital">Parámetros de la Señal Digital</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-de-audio">Archivos de Audio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representacion-espectral">Representación Espectral</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

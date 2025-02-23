@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Entorno de desarrollo Node.js + Express &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa02/ch03/nodejs-express';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Servidor HTTP básico" href="../ch02/cliente-servidor.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa02/ch03/nodejs-express.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa02/ch03/nodejs-express.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Entorno de desarrollo Node.js + Express</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comando-npm">Comando npm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto-node-js">Proyecto Node.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npm-run">npm run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-de-desarrollo">Módulos de desarrollo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto-en-express">Proyecto en Express</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="entorno-de-desarrollo-node-js-express">
+<h1>Entorno de desarrollo Node.js + Express<a class="headerlink" href="#entorno-de-desarrollo-node-js-express" title="Link to this heading">#</a></h1>
+<p>Como vimos anteriormente, es posible crear un servidor mínimo con el módulo <code class="docutils literal notranslate"><span class="pre">http</span></code> que devuelve una página web estática. Esto se hizo con el siguiente código:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">&#39;./index.html&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">read</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server running on port </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Pero las aplicaciones web se vuelven un tanto complejas cuando queremos agregar más páginas y funcionalidades. Debido a esto existen otras librerías/frameworks, construidas sobre los módulos básicos de Node.js, que ya tienen resulta la funcionalidad de muchos tipos de sitios web y facilitan el desarrollo al no tener que estar escribiendo todo desde cero usando solo los módulos integrados.</p>
+<p>Para poder trabajar con estas librerías, primero tenemos que aprender cómo funcionan los proyectos y los módulos necesarios en Node.js.</p>
+<section id="comando-npm">
+<h2>Comando npm<a class="headerlink" href="#comando-npm" title="Link to this heading">#</a></h2>
+<p>El ecosistema de Node.js no termina con las librerías integradas. Desde sus comienzos se pensó como algo modular para que otros/as desarrolladores/as pudieran extender su funcionalidad. Una de las innovaciones de Node.js es que incorpora un gestor de módulos de terceros, similar al comando <code class="docutils literal notranslate"><span class="pre">pip</span></code> y <em>PyPI</em> en Python, y un gestor de proyectos Node.js.</p>
+<p>Los módulos creados por terceras partes se pueden investigar en la siguiente página:</p>
+<p><a class="reference internal" href="#www.npmjs.com"><span class="xref myst">npmjs.com</span></a></p>
+<p>Para poder instalar módulos de terceros debemos utilizar el comando <code class="docutils literal notranslate"><span class="pre">npm</span></code> que sería una suerte de acórnimo de <em>node package manager</em> no reconocido. Este comando se instala por defecto con Node.js, lo podemos comprobar en una terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Para instalar un paquete se utiliza la opción install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>nombre-del-paquete
+npm<span class="w"> </span>i<span class="w"> </span>nombre-del-paquete<span class="w">  </span><span class="c1"># La opción i es alias de install.</span>
+</pre></div>
+</div>
+<p>Nota: para obtener ayuda sobre los comandos se puede ejecutar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span><span class="nb">help</span><span class="w">  </span><span class="c1"># Información general del comando.</span>
+npm<span class="w"> </span><span class="nb">help</span><span class="w"> </span>install<span class="w">  </span><span class="c1"># Página de manual con la información sobre la instalación de paqutes, se sale con la tecla q.</span>
+npm<span class="w"> </span><span class="nb">help</span><span class="w"> </span>init<span class="w">  </span><span class="c1"># Página de manual con la información sobre la creación de proyectos como paqutes, se sale con la tecla q.</span>
+</pre></div>
+</div>
+<p>Por ejemplo, si creamos una carpeta vacía llamada <code class="docutils literal notranslate"><span class="pre">servidor-express</span></code> y dentro de ella ejecutamos el siguiente comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>express
+</pre></div>
+</div>
+<p>Va a instalar la librería <code class="docutils literal notranslate"><span class="pre">express</span></code> y para ello crea una estructura de directorios y archivos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node_modules
+package.json
+package-lock.json
+</pre></div>
+</div>
+<p>La primera entrada es una carpeta que se llama <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> y contiene el módulo <code class="docutils literal notranslate"><span class="pre">express</span></code> y todos los módulos de los que este depende. Si miran en la carpeta van a ver que son unos cuantos.</p>
+<p>Luego crea otros dos archivos de tipo JSON. El primero es <code class="docutils literal notranslate"><span class="pre">package-lock.json</span></code> que guarda el nombre, la versión y demás información de todas las librerías instaladas en <code class="docutils literal notranslate"><span class="pre">node_modules</span></code>, las que instalamos explícitamente y sus dependencias. Esto le sirve como información a <code class="docutils literal notranslate"><span class="pre">npm</span></code> para que cuando se actualicen los módulos o se instalen nuevos el estado de la instalación sea consistente.</p>
+<p>El segundo archivo tipo JSON es <code class="docutils literal notranslate"><span class="pre">package.json</span></code> que contiene la información del paquete que instalamos con <code class="docutils literal notranslate"><span class="pre">npm</span></code> en el directorio actual, en este caso solo <code class="docutils literal notranslate"><span class="pre">express</span></code>. Esto es porque el comando <code class="docutils literal notranslate"><span class="pre">npm</span></code> siempre considera al directorio actual como el directorio del proyecto de programación, por defecto, los paquetes no se instalan de manera global en la computadora.</p>
+<p>Los archivos JSON que crea y la estructura de directorios no se deben modificar, son utilizados y actualizados por <code class="docutils literal notranslate"><span class="pre">npm</span></code>. Los archivos <code class="docutils literal notranslate"><span class="pre">package.json</span></code> y <code class="docutils literal notranslate"><span class="pre">package-lock.json</span></code> incluso sirver para volver a instalar las dependencias si por razones de espacio necesitamos borrar la carpeta <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> porque es muy pesada. Por ejemplo, si borramos la carpeta <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> y ejecutamos el comando</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w">  </span><span class="c1"># Sin opciones.</span>
+</pre></div>
+</div>
+<p>vuelve a crear el directorio <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> e instalar todos los paquetes que están listados en package.json junto con sus dependencias.</p>
+<p>Los paquetes también se pueden desisntalar si ya no se necesitan para el proyecto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>uninstall<span class="w"> </span>express
+npm<span class="w"> </span>r<span class="w"> </span>express<span class="w">  </span><span class="c1"># La opción r es alias de unisntall.</span>
+</pre></div>
+</div>
+</section>
+<section id="proyecto-node-js">
+<h2>Proyecto Node.js<a class="headerlink" href="#proyecto-node-js" title="Link to this heading">#</a></h2>
+<p>Para crear proyecto de programación con Node.js se usa el comando <code class="docutils literal notranslate"><span class="pre">npm</span></code> con la opción <code class="docutils literal notranslate"><span class="pre">init</span></code>. Por ejemplo, creamos un directorio vació llamado <code class="docutils literal notranslate"><span class="pre">proyecto-npm</span></code> para nuestro proyecto, entramos en él y ejecutamos el siguiente comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>init
+</pre></div>
+</div>
+<p>Esto nos lleva a una aplicación por consola donde podemos ingresar datos del proyecto que queremos crear.</p>
+<ul class="simple">
+<li><p>nombre del paquete</p></li>
+<li><p>version (semver, versión semática)</p></li>
+<li><p>descripción</p></li>
+<li><p>script punto de entrada (el archivo js que inicia la apilcación)</p></li>
+<li><p>script para los test (el comando que se ejecuta para el testeo)</p></li>
+<li><p>repositorio git (url)</p></li>
+<li><p>palabras clave (para búsqueda en npm)</p></li>
+<li><p>autor</p></li>
+<li><p>licencia del proyecto</p></li>
+</ul>
+<p>Esto crea el archivo <code class="docutils literal notranslate"><span class="pre">package.json</span></code> que es el archivo que describe el proyecto del directorio actual en el cuál vamos a trabajar. Como vimos arriba, cuando instalemos dependencias las va a listar en este archivo también.</p>
+<p>Se le puede dar <code class="docutils literal notranslate"><span class="pre">enter</span></code> a cada opción y dejar todas por defecto, incluso está la opción <code class="docutils literal notranslate"><span class="pre">-y</span></code> que hace eso por defecto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>init<span class="w"> </span>-y<span class="w">  </span><span class="c1"># Sí a todo.</span>
+</pre></div>
+</div>
+<section id="npm-run">
+<h3>npm run<a class="headerlink" href="#npm-run" title="Link to this heading">#</a></h3>
+<p>Dentro del archivo <code class="docutils literal notranslate"><span class="pre">package.json</span></code> creado con <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">init</span></code> hay una sección de scripts que se puede usar para agregar un comando que nos sirva para probar la aplicación. En la parte que dice:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+</pre></div>
+</div>
+<p>podemos reemplazar la entrada <code class="docutils literal notranslate"><span class="pre">&quot;test&quot;</span></code> o agregar otra que ejecute el comando que vamos a utilizar par iniciar el servidor, por ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node index.js&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+</pre></div>
+</div>
+<p>Luego, en la terminar, dentro de la carpeta del proyecto de Node.js podemos ejecutar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<p>y nos va a ejecutar nuestro los scipts que hayamos creado para probar que la aplicación funciones correctamente. Esto es muy útil cuando se necesitan distintas opciones para distintos puntos de acceso o configuraciones para ejecutar y probar el servidor.</p>
+<p>Al script para iniciar el servidor se le suele poner el nombre <em>start</em>, por eso vamos a reemplazar el nombre de la llave <code class="docutils literal notranslate"><span class="pre">&quot;test&quot;</span></code> por <code class="docutils literal notranslate"><span class="pre">&quot;start&quot;</span></code> dentro de <code class="docutils literal notranslate"><span class="pre">&quot;scripts&quot;</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node index.js&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+</pre></div>
+</div>
+<p>y luego se puede ejecutar el comando <code class="docutils literal notranslate"><span class="pre">npm</span></code>. Si se usan los nombres <code class="docutils literal notranslate"><span class="pre">test</span></code> y <code class="docutils literal notranslate"><span class="pre">start</span></code> para hacer pruebas o iniciar el servidro se puede omitir la opción <code class="docutils literal notranslate"><span class="pre">run</span></code>, npm acepta esos nombres y los busca como sripts en <code class="docutils literal notranslate"><span class="pre">package.json</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>start<span class="w">  </span><span class="c1"># Ok.</span>
+npm<span class="w"> </span><span class="nb">test</span><span class="w">  </span><span class="c1"># Ok.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="modulos-de-desarrollo">
+<h2>Módulos de desarrollo<a class="headerlink" href="#modulos-de-desarrollo" title="Link to this heading">#</a></h2>
+<p>Además de los módolos que necesitamos para que la aplicación funciones, también vamos a necesitar otros para que nos faciliten el desarrollo. Por ejemplo, si queremos que el servidor se reinicie automáticamente cuando cambiamos el código fuente, vamos a necesitar de una aplicación que esté monitoreando los cambios en los archivos y volviendo a ejecutar el comando para iniciar al servidor.</p>
+<p>Las <strong>dependecias de desarrollo</strong> son librerías que no vamos a necesitar cuando subamos nuestra aplicación a un servidor y, como utilizan recursos y requieren espacio, las podemos diferenciar de las <strong>dependencias de producción</strong>. De esta manera las librerías de desarrollo solo las instalamos cuando estamos trabajando en el proyecto pero no cuando el proyecto está en producción.</p>
+<p>Una de las aplicaciones Node.js que se utiliza para esto se llama nodemon (monitor de node) y se puede instalar como dependencia de desarrollo con la opción <code class="docutils literal notranslate"><span class="pre">-D</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>nodemon<span class="w"> </span>-D
+</pre></div>
+</div>
+<p>Esto instala el comando y agrega la informarmación en <code class="docutils literal notranslate"><span class="pre">package.json</span></code> dentro de la llave <code class="docutils literal notranslate"><span class="pre">&quot;devDependencies&quot;</span></code>.</p>
+<p>Para utilizar <code class="docutils literal notranslate"><span class="pre">nodemon</span></code> tenemos que crear otro comando dentro de la sección de scripts de <code class="docutils literal notranslate"><span class="pre">package.json</span></code>, por convención lo vamos a llamar <code class="docutils literal notranslate"><span class="pre">dev</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node index.js&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nodemon index.js&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+</pre></div>
+</div>
+<p>Luego podemos ejecutar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+<p>y vamos a tener el servidor corriendo y reiniciándose cada vez que hagamos un cambio. Esto nos evita tener que estar ejecutando los comando cada vez que cambiamos algo para probar.</p>
+</section>
+<section id="proyecto-en-express">
+<h2>Proyecto en Express<a class="headerlink" href="#proyecto-en-express" title="Link to this heading">#</a></h2>
+<p>Para crear un proyecto utilizando la librería express tenemos que realizar los siguiente pasos.</p>
+<p>Primero creamos una carpeta vacío llamada <code class="docutils literal notranslate"><span class="pre">proyecto-express</span></code> y luego, desde dentro de esa carpeta ejecutamos el comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>init<span class="w"> </span>-y
+</pre></div>
+</div>
+<p>Eso nos crea el archivo <code class="docutils literal notranslate"><span class="pre">package.json</span></code> con el siguiente contenido por defecto:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;proyecto-express&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISC&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Luego instalamos la librería express:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>express
+</pre></div>
+</div>
+<p>Esto nos agrega el directorio <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> y el archivo <code class="docutils literal notranslate"><span class="pre">package-lock.json</span></code>, que no hay que tocar, <code class="docutils literal notranslate"><span class="pre">npm</span></code> se encarga de estos archivos cuando instalamos o modificamos dependencias. Y también no actualiza el archivo <code class="docutils literal notranslate"><span class="pre">package.json</span></code> con <code class="docutils literal notranslate"><span class="pre">express</span></code> como <strong>dependencia de producción</strong> luego de la llave <code class="docutils literal notranslate"><span class="pre">&quot;license&quot;</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;proyecto-express&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;express&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.18.2&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Luego le agregamos la librería <code class="docutils literal notranslate"><span class="pre">nodemon</span></code> como <strong>dependencia de desarrollo</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>nodemon<span class="w"> </span>-D
+</pre></div>
+</div>
+<p>Eso, de nuevo, instala y actualiza los archivos dentro de <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> y el archivo <code class="docutils literal notranslate"><span class="pre">package-lock.json</span></code> que lista las dependencias instaladas en ese directorio. Pero también nos actualiza <code class="docutils literal notranslate"><span class="pre">package.json</span></code> con la librería <code class="docutils literal notranslate"><span class="pre">nodemon</span></code> como <strong>dependencia de desarrollo</strong> abajo de todo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;proyecto-express&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;express&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.18.2&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;nodemon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.0.1&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Hasta ahora solo tenemos tres cosas en el directorio del proyecto, una carpeta y dos archivos JSON, nada más:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node_modules<span class="w">  </span>package.json<span class="w">  </span>package-lock.json
+</pre></div>
+</div>
+<p>Ahora, antes de configurar <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">run</span></code> con los escripts <code class="docutils literal notranslate"><span class="pre">start</span></code> y <code class="docutils literal notranslate"><span class="pre">dev</span></code> (no vamos a utilizar <code class="docutils literal notranslate"><span class="pre">test</span></code>) vamos a crear los archivos mínimos necesario, pero para eso vamos a utilizar una estructura de directorios, que vamos a ir completando en base a convenciones durante las siguientes clases, para organizar distintos tipos de archivos dentro de <code class="docutils literal notranslate"><span class="pre">proyecto-express</span></code>.</p>
+<p>El script principal, que vamos a llamar <code class="docutils literal notranslate"><span class="pre">app.js</span></code> y lo vamos a poner en la carpeta principal, junto con los archivos JSON. El nombre <code class="docutils literal notranslate"><span class="pre">app.js</span></code> <strong>no</strong> es el valor por defecto de <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">init</span></code> y por eso tenemos que cambiar el valor de la llave <code class="docutils literal notranslate"><span class="pre">&quot;main&quot;</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">package.json</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app.js&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>La carpeta <code class="docutils literal notranslate"><span class="pre">static</span></code> la vamos a utilizar para guardar las págias web y los recursos estáticos, las que no se modifican con la información de usuario y que suelen ser públicas.</p>
+<p>La carpeta <code class="docutils literal notranslate"><span class="pre">views</span></code> la vamos a utilizar para los componentes de las páginas dinámica que luego vamos a hacer con templates.</p>
+<p>La carpeta <code class="docutils literal notranslate"><span class="pre">src</span></code> (por source) la vamos a utilizar para poner los sripts del servidor salvo el script principal (<code class="docutils literal notranslate"><span class="pre">app.js</span></code>).</p>
+<p>Para el ejemplo de hoy solo vamos a necesitar <code class="docutils literal notranslate"><span class="pre">app.js</span></code> y la carpeta <code class="docutils literal notranslate"><span class="pre">static</span></code>. Entonces vamos a crear el script principal <code class="docutils literal notranslate"><span class="pre">app.js</span></code> y, dentro de la carpeta static, una página HTML que vamos a llamar <code class="docutils literal notranslate"><span class="pre">index.html</span></code>. La estructura de directorios debería quedar así:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node_modules
+static
+<span class="w">  </span>index.html
+app.js
+package-lock.json
+package.json
+</pre></div>
+</div>
+<p>Estas cosas pueden parece caprichosas pero son muy importantes porque luego el proyecto se va complejizando.</p>
+<p>En este caso archivo <code class="docutils literal notranslate"><span class="pre">./static/index.html</span></code> contiene una página html por defecto que podemos crear en vscode escribiendo <code class="docutils literal notranslate"><span class="pre">html:5</span></code>, tocando <code class="docutils literal notranslate"><span class="pre">&lt;enter&gt;</span></code> y cambiando el título y agregando algo visible dentro de <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Página princial<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Proyecto Express<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Y el archivo <code class="docutils literal notranslate"><span class="pre">app.js</span></code> va a contener el archivo que vamos a estudiar a continuación.</p>
+<p>Ahora, lo único que falta es configurar los scripts <code class="docutils literal notranslate"><span class="pre">start</span></code> y <code class="docutils literal notranslate"><span class="pre">dev</span></code> en el archiov <code class="docutils literal notranslate"><span class="pre">package.js</span></code>, para eso simplmenente modificamos la sección scripts y la dejamos de la siguiente manera:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node app.js&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nodemon app.js&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+</pre></div>
+</div>
+<p>En el archivo <code class="docutils literal notranslate"><span class="pre">app.js</span></code> podemos copiar el código del ejemplo de más arriba que crea el servidor más simple:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="s1">&#39;./static/index.html&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">root</span><span class="o">:</span><span class="w"> </span><span class="nx">__dirname</span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="c1">// Inicialización de la aplicación servidor.</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server running on port </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Luego para desarrollar y poder ver los cambios usamos el comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+<p>Y con eso ya está el servidor andando y actualizándose a cada modificación sin tener que estar volviendo a ejecutar el comando cada vez que hagamos un cambio.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa02/ch03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ch02/cliente-servidor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Servidor HTTP básico</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comando-npm">Comando npm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto-node-js">Proyecto Node.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npm-run">npm run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-de-desarrollo">Módulos de desarrollo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto-en-express">Proyecto en Express</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

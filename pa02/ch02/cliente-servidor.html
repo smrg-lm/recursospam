@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Servidor HTTP básico &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa02/ch02/cliente-servidor';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Entorno de desarrollo Node.js + Express" href="../ch03/nodejs-express.html" />
+    <link rel="prev" title="Node.js y módulos CommonJS" href="../ch01/nodejs-commonjs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa02/ch02/cliente-servidor.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa02/ch02/cliente-servidor.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Servidor HTTP básico</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-arquitectura-cliente-servidor">Introducción a la arquitectura cliente-servidor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peticion-estatica">Petición estática</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peticion-dinamica">Petición dinámica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#servidor-estatico-utilizando-node-js">Servidor estático utilizando Node.js</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#servidor-dinamicos-utilizando-node-js">Servidor dinámicos utilizando Node.js</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trabajo-a-realizar-de-ahora-en-mas">Trabajo a realizar de ahora en más</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="servidor-http-basico">
+<h1>Servidor HTTP básico<a class="headerlink" href="#servidor-http-basico" title="Link to this heading">#</a></h1>
+<p>Descarga la <a class="reference internal" href="#./ejemplos.zip"><span class="xref myst">Carpeta de Ejemplos</span></a></p>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>En los últimos años el mundo de los desarrolladores de tecnologías para internet ha cambiado vertiginosamente, de hecho todo el tiempo hay que actualizarse para estar al día de los nuevos desarrollos.</p>
+<p>Páginas, servidores, lenguajes, publicidad y todo lo que tiene que ver con la web ha cambiado de paradigma varias veces, pero en general podemos dividir muchas de estas tecnologías en dos grandes ramas según quién haga el procesamiento: las que maneja el cliente/usuario desde su máquina/navegador y las que son realizadas por los servidores.</p>
+<p>Además podemos hacer una división referida al contenido que tienen las páginas, las cuales podemos considerar de orden <strong>estático o dinámico</strong>.</p>
+<hr class="docutils" />
+<p>Actualmente podemos trabajar con un <strong>conjunto de lenguajes estandarizados</strong> que nos permiten desarrollar nuestras páginas en estos ámbitos (HTML5, CSS, JavaScript, SQL).</p>
+<p>Estos lenguajes pueden trabajar con <strong>información estática y/o dinámica</strong>, es decir que pueden o no actualizar de forma automatizada la información o contenido que muestran.</p>
+<p>Los lenguajes que permiten trabajar con webs dinámicas permiten cambiar el contenido de forma simple y preestablecida, como así también generar procesamientos en los datos que den lugar a nuevas formas de mostrar información.</p>
+<p>Estas acciones se realizan en base a peticiones a diferentes servicios alojados en servidores, los cuales en general se basan en consultas a diferentes <strong>bases de datos</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="introduccion-a-la-arquitectura-cliente-servidor">
+<h2>Introducción a la arquitectura cliente-servidor<a class="headerlink" href="#introduccion-a-la-arquitectura-cliente-servidor" title="Link to this heading">#</a></h2>
+<p>Llamaremos <strong>servidores</strong>, de servicios o bases de datos, a <strong>computadoras remotas</strong>, conectadas a una red, mediante las cuales una aplicación cliente (“user-agent” es el término técnico) puede acceder para obtener datos e información que luego visualizará de forma local, generando un retroalimentación entre este cliente y el servidor.</p>
+<p>[IMAGEN]</p>
+<hr class="docutils" />
+<p>El contenido dinámico se puede generar tanto del lado del cliente como del servidor.</p>
+<p>Las webs estáticas se desarrollan con HTML y CSS como mucho para definir estilos visuales.</p>
+<p>El contenido dinámico <strong>del lado del cliente</strong> se desarrolla en base a lenguajes como JavaScript que se ejecutan desde el navegador y mediante programas instalados en la máquina del cliente.</p>
+<p>El contenido dinámico <strong>del lado del servidor</strong> se realiza con lenguajes como PHP, Python, ASP, PERL, etc., los cuales reciben <strong>peticiones</strong>, procesan los datos y devuelven una respuesta al cliente.</p>
+<p>[IMAGEN]</p>
+<p>Estos últimos permiten la utilización de bases de datos, scripts de procesamiento, streaming, etc., con casi cualquier información, lo que permite que la actualización y cantidad de procesos a realizar sea muy alta (escalabilidad).</p>
+</section>
+<hr class="docutils" />
+<section id="peticion-estatica">
+<h2>Petición estática<a class="headerlink" href="#peticion-estatica" title="Link to this heading">#</a></h2>
+<p>Ahora evaluaremos cómo se hace una petición de una página web estática, basada en HTML.</p>
+<p>El tipo de página web más simple está desarrollado bajo un concepto totalmente estático, de hecho está basado en su gran mayoría por texto plano y escrito en HTML.</p>
+<p>A grandes rasgos, cuando llamamos (desde un navegador) a una página (formato HTML) que está alojada en un servidor pasa lo siguiente:</p>
+<ol class="arabic simple">
+<li><p>Nuestra computadora, mediante un navegador web, solicita al servidor una página a través de internet.</p></li>
+<li><p>El servidor envía los datos en formato de texto.</p></li>
+<li><p>El navegador recibe esos datos, interpreta la página web que envió el servidor y nos la muestra según la resolución de monitor que tengamos, la preferencias del usuario y algún que otro factor.</p></li>
+</ol>
+<hr class="docutils" />
+<p>El esquema general sería:</p>
+<p>[IMAGEN]</p>
+<hr class="docutils" />
+<p>Fácilmente nos podemos dar cuenta que las webs estáticas no nos permiten una interactividad muy elaborada con la información que pueda ir guardando el usuario y, de hecho, usar HTML solo permite cambiar visualmente algunas cosas.</p>
+<p>Si quisieramos, por ejemplo, que la página cambie algo deberiamos entrar al servidor, cambiar el código HTML y volverlo a subir el código actualizado lo que torna poco práctico el mantenimiento de una simple página.</p>
+<p>De esa manera, si quisiéramos que un usuario cargue datos de forma remota y después pueda realizar visualizaciones de esos datos, no podríamos hacerlo de esta forma.</p>
+<p>A raíz de esto aparecieron algunas tecnologías que hacen a la página más “usable” y agregan algunas características a la base HTML.</p>
+</section>
+<hr class="docutils" />
+<section id="peticion-dinamica">
+<h2>Petición dinámica<a class="headerlink" href="#peticion-dinamica" title="Link to this heading">#</a></h2>
+<p>Muchas de las mejoras que se le ha hecho a HTML se debieron a las tecnologías que se aplican del lado del cliente, es decir las que se descargan junto con la página web solicitada y se ejecutan en nuestra máquina directamente (consumiendo nuestros recursos).</p>
+<p>Lenguajes como JavaScript, las applets de Java (obsoletos), CSS (Cascading Style Sheets – hojas de estilo en cascada), las animaciones Flash (obsoleto) y otras, permiten un grado de interactividad más potente y que, al fin y al cabo, sirven para dotar a las páginas de una herramienta más para mostrar su contenido de una forma más fácil y atractiva.</p>
+<p>Estos permiten cosas como responder al movimiento del mouse, o a la presión de alguna tecla en particular, películas interactivas mediante animaciones, etc.</p>
+<hr class="docutils" />
+<p>Estas tecnologías que pueden ser muy llamativas y que permiten desarrollar diseños más efectivos e imaginativos, dependen sin embargo de las características del navegador (hoy en día bastante estandarizado y solucionado por las distintas librerías de programación).</p>
+<p>Además las tecnologías del lado cliente no pueden rescatar información de servidores, por que su accionar es puramente local.</p>
+<p>Esto los imposibilita a recuperar información de base de datos o de servicios, las cuales son fundamentales en este momento de evolución y uso de la web.</p>
+<hr class="docutils" />
+<p>Los lenguajes que se utilizan del lado del servidor son invisibles para los clientes.</p>
+<p>Las páginas utilizan scripts o plantillas para generar las páginas HTML enviar.</p>
+<p>Según la tecnología la sintaxis puede variar pero el principio siempre el de generar el contenido de la página web requerida por el cliente según los datos enviados por el cliente.</p>
+<hr class="docutils" />
+<p>Los pasos para el cargado de una web con este tipo de tecnología cambian sensiblemente:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Nuestra computadora, mediante un navegador, solicita una página de internet alojada en un servidor remoto.
+2. El servidor comprueba si la página solicitada contiene algún script del lado del servidor (JavaScript, PHP, ASP, Python, etc.).
+3. El servidor ejecuta los scripts y el resultado de estos es añadido a la página HTML solicitada.
+4. El navegador recibe estos datos en formato texto, interpreta la página web enviada y la muestra según la configuración local.
+</pre></div>
+</div>
+<p>Los lenguajes del lado servidor necesitan un programa que interprete el código de los script.</p>
+<hr class="docutils" />
+<p>El esquema general sería:</p>
+<p>[IMAGEN]</p>
+</section>
+<section id="servidor-estatico-utilizando-node-js">
+<h2>Servidor estático utilizando Node.js<a class="headerlink" href="#servidor-estatico-utilizando-node-js" title="Link to this heading">#</a></h2>
+<p>A continuación vamos a desarrollar y servidor muy simple con Node.js que devuelve páginas estáticas. La estrucutra del proyecto la creamos manualmente en una carpeta llamada <code class="docutils literal notranslate"><span class="pre">servidor-http</span></code> que contien dos archivos, una página HTML y un script en JavaScript. Ambos archivos se llaman <code class="docutils literal notranslate"><span class="pre">index.html</span></code> e <code class="docutils literal notranslate"><span class="pre">index.js</span></code> por convención:</p>
+<div class="highlight-tty notranslate"><div class="highlight"><pre><span></span>servidor-http/
+  index.html
+  index.js
+</pre></div>
+</div>
+<p>El archivo <code class="docutils literal notranslate"><span class="pre">index.html</span></code> contiene una página HTML básica que podemos crear en <code class="docutils literal notranslate"><span class="pre">vscode</span></code> escribiendo <code class="docutils literal notranslate"><span class="pre">html:5</span></code> y tocando enter en el editor. Le agregamos el título y algo de contenído mínimo en <code class="docutils literal notranslate"><span class="pre">body</span></code> para poder visualizarla:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Página Estática<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Página Estática<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Texto de la página estática.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Ahora vamos con el programa en JavaScript. Como la programación necesaria para interactuar con los sockets y el protocolo de red es relativamente compleja, requiere de funcionalidades de más bajo nivel para interactuar con el sistema operativo, vamos a utilizar un módulo integrado de Node.js que implementa por nosotros/as toda la lógica necesaria para crear las conexiones.</p>
+<p>El módulo que vamos a utilizar se llama <code class="docutils literal notranslate"><span class="pre">'http'</span></code>. Este módulo contiene objetos y funciones necesarias para implementar clientes y servidores HTTP. Por convención lo vamos a importar en una constante en minúsculas con su mismo nombre:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>De este módulo vamos a utilizar la función <code class="docutils literal notranslate"><span class="pre">http.createServer</span></code>. Esta función retorna un objeto que crea un servidor HTTP, representado por el objeto <code class="docutils literal notranslate"><span class="pre">http.Server</span></code>, listo para usar.</p>
+<p>La función <code class="docutils literal notranslate"><span class="pre">createServer</span></code> recibe una función de respuesta (callback) como primer argumento que, a su vez, recibe dos agrumentos <code class="docutils literal notranslate"><span class="pre">req</span></code> y <code class="docutils literal notranslate"><span class="pre">res</span></code>. Se denimina función de respuesta porque es llama automáticamente cada vez que el servidor recibe una petición e implementa la lógica de respuesta. La estructura es la siguiente:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">});</span>
+</pre></div>
+</div>
+<p>Guardamos el objeto <code class="docutils literal notranslate"><span class="pre">http.Server</span></code> en la constante <code class="docutils literal notranslate"><span class="pre">server</span></code> que creamos para tal fin. Este objeto lo guardamos en una constante porque debe ser único y va a estar presente hasta el final de la ejecución del programa. A su vez, le pasamos la función flecha <code class="docutils literal notranslate"><span class="pre">(req,</span> <span class="pre">res)</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">}</span></code> como argumento a la función <code class="docutils literal notranslate"><span class="pre">createServer</span></code>. Para que nuestro servidor pueda recibir y responder a peticiones HTTP debemos implementar la lógica necesaria dentro de la función flecha utilizando los parámetros <code class="docutils literal notranslate"><span class="pre">req</span></code> y <code class="docutils literal notranslate"><span class="pre">res</span></code>.</p>
+<p>El parámetro <code class="docutils literal notranslate"><span class="pre">req</span></code> recibe como argumento un objeto <code class="docutils literal notranslate"><span class="pre">http.IncomingMessage</span></code> que representa la petición HTTP. El parámetro <code class="docutils literal notranslate"><span class="pre">res</span></code> es un objeto <code class="docutils literal notranslate"><span class="pre">http.ServerResponse</span></code> que representa la respuesta que se le va a dar a la petición.</p>
+<p>Para completar el ciclo de vida del programa nos falta definir un puerto de escucha en el sistema operativo e iniciar el servidor. Esto los vamos a hacer con solo dos líneas de código más:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>El método <code class="docutils literal notranslate"><span class="pre">listen</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">server</span></code> recibe un número de puerto y comienza un ciclo infinito. Cada vez que llegue una petición HTTP va a llamar a nuestra función de respuesta.</p>
+<p>Pero primero vamos a completar el ciclo de vida del programa servidor para ver que todo esté funcionando. Para esto vamos completar la función de respuesta usando el objeto <code class="docutils literal notranslate"><span class="pre">req</span></code> para hacer un log de la URL que se pidió desde el navegador en la consola y respondiendo con una página vacía.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Utilizamos la propiedad `url` para acceder a la URL de la petición.</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;URL peticionada:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Indicamos que finalizamos la respuesta con una página vacía (valor por defecto).</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Probamos el programa para ver que funcione, en la consola ejecutamos nuestro script con el comando <code class="docutils literal notranslate"><span class="pre">node</span></code>:</p>
+<div class="highlight-tty notranslate"><div class="highlight"><pre><span></span>node index.js
+</pre></div>
+</div>
+<p>Y en el navegador peticionamos la URL del host local en el puerto de nuestro servidor: <code class="docutils literal notranslate"><span class="pre">http://localhost:3000/</span></code>.</p>
+<p>Preguntas:</p>
+<ul class="simple">
+<li><p>¿Qué pasa si no utilizamos <code class="docutils literal notranslate"><span class="pre">end</span></code> en la respuesta?</p></li>
+<li><p>¿Qué acciones suceden del lado del cliente (navegador) o del servidor (consola)?</p></li>
+<li><p>¿Cómo hacemos para finalizar el programa?</p></li>
+</ul>
+<p>Para completar el programa vamos a hacer que nuestro servidor responda a cualquier petición HTTP con el contenido del archivo <code class="docutils literal notranslate"><span class="pre">index.html</span></code> que creamos al principio. Para poder enviar el archivo tenemos que leerlo del disco rígido y para eso necesitamos el módulo llamado <code class="docutils literal notranslate"><span class="pre">'fs'</span></code> (por file system). Debajo de la importación del módulo <code class="docutils literal notranslate"><span class="pre">http</span></code> agregamos este nuevo módulo:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Agregamos el módulo en la secciónd e importaciones.</span>
+</pre></div>
+</div>
+<p>Este módulo nos proporciona una función que nos permite hacer un streaming del conotenido de un archivo como respuesta a una petición HTTP un objeto <code class="docutils literal notranslate"><span class="pre">fs.ReadStream</span></code> y su función <code class="docutils literal notranslate"><span class="pre">pipe</span></code> específicamente diseñada para este tipo de respuestas.</p>
+<p>Para probar, reemplazamos el contenido de nuestra función de respuesta con el siguiente código:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// request y response.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">&#39;./index.html&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Devuelve un objeto fs.ReadStream</span>
+<span class="w">    </span><span class="nx">read</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span><span class="w">  </span><span class="c1">// El método pipe de fs.ReadStream envía los datos al cliente a medida que se leen del disco y termina la respuesta.</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Como no nos interesa analizar los datos de la petición <code class="docutils literal notranslate"><span class="pre">req</span></code> vamos a dejar el objeto sin usar. No pasa nada si no se usa la información de la petición.</p>
+<p>El ejemplo completo debe quedar de la siguiente manera:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">&#39;./index.html&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">read</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Probar en el navegador actualizando la página <code class="docutils literal notranslate"><span class="pre">http://localhost:3000/</span></code> y ver que esta se cargue correctamente.</p>
+<p>Preguntas:</p>
+<ul class="simple">
+<li><p>Visualizar el contenido HTML desde el inspector del navegador ¿Es correcta?</p></li>
+<li><p>¿Que sucede en la consola? (se puede agregar un log que indique que el servidor está corriendo).</p></li>
+<li><p>¿Cómo hacemos para finalizar el programa?</p></li>
+</ul>
+</section>
+<section id="servidor-dinamicos-utilizando-node-js">
+<h2>Servidor dinámicos utilizando Node.js<a class="headerlink" href="#servidor-dinamicos-utilizando-node-js" title="Link to this heading">#</a></h2>
+<p><strong>EJEMPLO EN CARPETA, FALTA COMPLETAR TEXTO</strong></p>
+</section>
+<section id="trabajo-a-realizar-de-ahora-en-mas">
+<h2>Trabajo a realizar de ahora en más<a class="headerlink" href="#trabajo-a-realizar-de-ahora-en-mas" title="Link to this heading">#</a></h2>
+<p>Para el desarrollo de esta segunda parte trabajaremos la arquitectura cliente-servidor de manera muy simple.</p>
+<p>La idea es poder crear un servidor local (en nuestra computadora) que trabaje con Node.js y las librerías CommonJS.</p>
+<p>Para eso trabajaremos con distintas herramientas que permiten crear aplicaciones simples del lado del servidor.</p>
+<p>Este tipo de servidores, de <strong>desarrollo</strong>, sirven para trabajar sobre un proyecto que luego podrá ser desplegado en un servidor remoto, de <strong>producción</strong>.</p>
+</section>
+<section id="enlaces">
+<h2>Enlaces<a class="headerlink" href="#enlaces" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://nodejs.org/api/synopsis.html">https://nodejs.org/api/synopsis.html</a></p>
+<p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module">https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa02/ch02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ch01/nodejs-commonjs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Node.js y módulos CommonJS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ch03/nodejs-express.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Entorno de desarrollo Node.js + Express</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-arquitectura-cliente-servidor">Introducción a la arquitectura cliente-servidor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peticion-estatica">Petición estática</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peticion-dinamica">Petición dinámica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#servidor-estatico-utilizando-node-js">Servidor estático utilizando Node.js</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#servidor-dinamicos-utilizando-node-js">Servidor dinámicos utilizando Node.js</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trabajo-a-realizar-de-ahora-en-mas">Trabajo a realizar de ahora en más</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

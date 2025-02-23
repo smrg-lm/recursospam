@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Login + sesión &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa02/ch09/login-session';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa02/ch09/login-session.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa02/ch09/login-session.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Login + sesión</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#password-hash">Password hash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-y-signup">Login y signup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#express-session">express-session</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session">Session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actividad">Actividad</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="login-sesion">
+<h1>Login + sesión<a class="headerlink" href="#login-sesion" title="Link to this heading">#</a></h1>
+<p>Vamos a tomar la estructura del proyecto vista en la sección anterior (disponible en la carpeta <code class="docutils literal notranslate"><span class="pre">estructura</span></code>) y le vamos a ir agregando los recursos que necesitamos para guardar usuarios únicos con una clave secreta. Luego vamos a agregar los recursos necesarios para generar una sesión que guarde el estado del/la usuario/a al navegar por la página.</p>
+<p>Todo lo vamos a ir viendo y haciendo como taller. <strong>Es importante la práctica de programación</strong>. Partiendo de una base de código (trabajo previo), la vamos a ir modificando para agregarle funcionalidad. Para esto vamos a tener que ir revisitando las distintas secciones del código del servidor. Esto lo hacemos así porque cuando se trabaja en proyectos modularizados tenemos que tener bien claro dónde está cada cosa y cuál es su función, tenemos que conocer, y mantener en la cabeza, qué hace y cómo funciona cada uno de nuestros archivos. Luego, cuando surjan errores sabremos dónde hay que ir para corregirlos.</p>
+<section id="password-hash">
+<h2>Password hash<a class="headerlink" href="#password-hash" title="Link to this heading">#</a></h2>
+<p>Las contraseñas no se almacenan como tales, lo que venimos haciendo está mal porque solo el/la usuario/a tiene que saber su contraseña y nadie más. Si está almacenada como texto en la base de datos, cualquiera con acceso a la base de datos puede ver la contraseñas. Para evitar esto, lo que se hace es codificar las contraseñas de manera que sea muy difícil de descodificarlas. Esto se hace mediante algoritmos criptográficos que se basan la factorización de números primos y otros condimentos como la sal.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La multiplicación de dos números primos al azar da otro número que solo puede ser el producto de los números originales. No se conoce una forma directa (eficiente) de calcular los dos factores originales, solo se puede hacer por fuerza bruta.</p>
+</div>
+<p>No vamos a entrar en los detalles criptográficos, solo vamos a utilizar las funciones de encriptación sincrónicas del módulo <code class="docutils literal notranslate"><span class="pre">bcrypt</span></code> de manera muy básica. <em>Demás está decir que nuestro sitio no va a ser seguro para producción, estamos viendo solo cuestiones muy básicas de la estructura general de un sitio web, hay muchas cosas que pueden fallar si no se tiene cuidado</em>.</p>
+<p>De este módulo vamos a usar solo dos funciones: <code class="docutils literal notranslate"><span class="pre">hashSync</span></code> y <code class="docutils literal notranslate"><span class="pre">compareSync</span></code>. La primera recibe la contraseña y la <em>sal</em> como parámetros y nos devuelve el hash de la contraseña. El hash es lo que guardamos en la base de datos y consiste en una cadena de caracteres que contiene la contraseña encriptada según el formato de bycript. La segunda función recibe la contraseña y el hash, y se fija si la contraseña coincide con el que está almacenado en el hash. Si esta función nos devuelve verdadero es que a contraseña es correcta, para esto repite el proceso de encriptación internamente.</p>
+<section id="enlaces">
+<h3>Enlaces<a class="headerlink" href="#enlaces" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.npmjs.com/package/bcrypt">https://www.npmjs.com/package/bcrypt</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Bcrypt">https://en.wikipedia.org/wiki/Bcrypt</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Salt_(cryptography)">https://en.wikipedia.org/wiki/Salt_(cryptography)</a></p>
+<p>Seguridad, que es algo que les da curiosidad: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Website_security">https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Website_security</a></p>
+</section>
+</section>
+<section id="login-y-signup">
+<h2>Login y signup<a class="headerlink" href="#login-y-signup" title="Link to this heading">#</a></h2>
+<p>Los siguientes pasos se trabajan sobre el proyecto previo llamado <code class="docutils literal notranslate"><span class="pre">estructura</span></code> que está como material de la clase anterior (copiar la carpeta en otra hubicación y renombrar).</p>
+<ol class="arabic simple" start="0">
+<li><p>Hacer <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> o borrar las dependencias de <code class="docutils literal notranslate"><span class="pre">package.json</span></code> e instalar los siguientes paquetes sin no funciona:</p></li>
+</ol>
+<div class="highlight-tty notranslate"><div class="highlight"><pre><span></span>npm install express better-sqlite3
+npm install nodemon -D
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Agregar dos formularios <code class="docutils literal notranslate"><span class="pre">signup.html</span></code> y <code class="docutils literal notranslate"><span class="pre">login.html</span></code> en <code class="docutils literal notranslate"><span class="pre">/view</span></code>. Con los campos/nombres <code class="docutils literal notranslate"><span class="pre">username</span></code>, <code class="docutils literal notranslate"><span class="pre">email</span></code> y <code class="docutils literal notranslate"><span class="pre">password</span></code> para <em>signup</em> y <code class="docutils literal notranslate"><span class="pre">username</span></code> y <code class="docutils literal notranslate"><span class="pre">password</span></code> para <em>login</em>. Nota: Esto luego lo vamos a reemlazar por plantillas, ahora necesitamos los formularios como páginas estáticas para probar que todo ande.</p></li>
+<li><p>Enviar los formularios signup y login desde los métodos GET de <code class="docutils literal notranslate"><span class="pre">/routes/index.js</span></code>. El path es relativo al directorio raíz del proyecto <code class="docutils literal notranslate"><span class="pre">.</span></code> al principio.</p></li>
+</ol>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="s1">&#39;signup.html&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">root</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./view&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="s1">&#39;login.html&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">root</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./view&#39;</span><span class="w"> </span><span class="p">});</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Agregar los log en los métodos post de las rutas <code class="docutils literal notranslate"><span class="pre">/signup</span></code> y <code class="docutils literal notranslate"><span class="pre">/login</span></code>, por ejemplo, en <code class="docutils literal notranslate"><span class="pre">/signup</span></code> sería:</p></li>
+</ol>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`Se recibieron los datos para signup: </span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">email</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">password</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Por ahora solo reenviamos la información al navegador logueamos las cosas en la terminal del lado del servidor para comprobar que todo ande.</p>
+<ol class="arabic simple" start="4">
+<li><p>Probar que todo ande escribiendo las rutas en el navegador.</p></li>
+<li><p>Agregar el paquete de encriptación para las contraseñas.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>bcrypt
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Modificar el script de la base de datos cambiando el nombre del campo <code class="docutils literal notranslate"><span class="pre">password</span></code> por <code class="docutils literal notranslate"><span class="pre">hash</span></code>.</p></li>
+</ol>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">users</span>
+<span class="p">(</span>
+<span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">hash</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Modificar los nombres de las variables en <code class="docutils literal notranslate"><span class="pre">db.js</span></code>, <code class="docutils literal notranslate"><span class="pre">password</span></code> por <code class="docutils literal notranslate"><span class="pre">hash</span></code> en la función que agrega el usuario a la base de datos.</p></li>
+<li><p>Crear la lógica de registro en el método post de la ruta <code class="docutils literal notranslate"><span class="pre">/signup</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">routes/index.js</span></code>:</p></li>
+</ol>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">bcrypt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcrypt&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../database/db.js&#39;</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/signup&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">usernameExists</span><span class="p">(</span><span class="nx">username</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Error: el usuario ya existe vaya a /login&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hashSync</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span><span class="w">  </span><span class="c1">// round = 2 ** 10;</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">addUser</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">hash</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// redirect</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;El usuario se registró correctamente vaya a /login&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Crear la comprobación del password en post de login. Para esto vamos tener que crear una función auxiliar que se encargue de:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Comprobar que el usuario exista en la base de datos, si no existe devuelve <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+<li><p>Obtener el hash del usuario de la base de datos que guardamos al crear el usuario en signup.</p></li>
+<li><p>Comparar el password que se envía en login devuelva el mismo hash que el que se guardó.</p></li>
+<li><p>Si coincide retornamos <code class="docutils literal notranslate"><span class="pre">true</span></code>, en caso contrario retornamos <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+</ul>
+<p>Esta función va a necesitar los parámetros <code class="docutils literal notranslate"><span class="pre">username</span></code> y <code class="docutils literal notranslate"><span class="pre">password</span></code> para poder hacer la comprobación. La función authenticate se define como:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">db</span><span class="p">.</span><span class="nx">userExists</span><span class="p">(</span><span class="nx">username</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">getHash</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">compareSync</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">hash</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Para obtener el <code class="docutils literal notranslate"><span class="pre">hash</span></code> de un usuario determinado de la base de datos tenemos que crear una función en el módulo <code class="docutils literal notranslate"><span class="pre">db.js</span></code> que obtenga este valor según el nombre de usuario:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">getHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">username</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">stmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">prepare</span><span class="p">(</span><span class="s1">&#39;SELECT hash FROM users WHERE username=?&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">stmt</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">username</span><span class="p">).</span><span class="nx">hash</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Por último hay que hacer la función de la ruta login para que compruebebe la autenticación con la función <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> definida arriba. Si el login es correcto redireccionamos a la página de usuario, si falla tenemos que enviar un mensaje de error.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Recibir los datos del formulario.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/user&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Error, usuario o constraseña incorrectos, vaya a /login&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>Hasta aquí tenemos el acceso a la base de datos y la encriptación y comprobación de la contraseña. Probar que todo ande.</p></li>
+</ol>
+</section>
+<section id="express-session">
+<h2>express-session<a class="headerlink" href="#express-session" title="Link to this heading">#</a></h2>
+<p>Para poder crear sesiones de usuario con <em>express</em> vamos a utilizar el módulo <code class="docutils literal notranslate"><span class="pre">express-session</span></code> que provee la funcionalidad básica para trabajar con <em>cookies</em> de sesión.</p>
+<p>Las <em>cookies</em> de sesión son información única que se envía para identificar a cada cliente en distintos agentes, simplemente guardan un identificador de sesión basado en el dominio para cada dispositivo. Pero no vamos a trabajar con sesiones concurrentes. Lo que importa es que es un identificador único de sesión para que el servidor sepa que tiene que enviar información específica.</p>
+<p>Las <em>cookies</em> en sí son información que se envía en el encabezado HTTP y sirven para guardar la información de las sesiones de usuarios/as, guardar preferencias de un sitio o hacer seguimiento. No vamos a entrar en detalle con esto, les dejo un enlace en castellano con algo más de información que podemos repasar en clase junto con la documentación del módulo (ver enlaces).</p>
+<p>Dentro del servidor <em>express</em> vamos a trabajar con el objeto <code class="docutils literal notranslate"><span class="pre">session</span></code> que se crea cuando instalamos el <em>middleware</em> a nivel de aplicación provisto por el paquete <code class="docutils literal notranslate"><span class="pre">express-session</span></code>. El objeto <code class="docutils literal notranslate"><span class="pre">session</span></code> guarda la información de sesión para cada usuario del lado del servidor, esta información no es la <em>cookie</em> sino propiedades que se le agregan al objeto <code class="docutils literal notranslate"><span class="pre">session</span></code> para trabajar con él. Más abajo vamos a ver que para identificar al usuario/a solo vamos a almacenar su nombre y dejar que <code class="docutils literal notranslate"><span class="pre">express-session</span></code> se encargue del resto.</p>
+<section id="id1">
+<h3>Enlaces<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><a class="github reference external" href="https://github.com/expressjs/session#readme">expressjs/session</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Una explicación de las cookies, general e incompleta, ver recurso en internet: <a class="reference external" href="https://ull-esit-pl-1617.github.io/estudiar-cookies-y-sessions-en-expressjs-victor-pamela-jesus/cookies/chapter1.html">https://ull-esit-pl-1617.github.io/estudiar-cookies-y-sessions-en-expressjs-victor-pamela-jesus/cookies/chapter1.html</a></p>
+</div>
+</section>
+</section>
+<section id="session">
+<h2>Session<a class="headerlink" href="#session" title="Link to this heading">#</a></h2>
+<p>Los pasos a seguir son la continuación de <a class="reference internal" href="#login.md"><span class="xref myst">login</span></a> hecho sobre la estructura de rutas definida en <a class="reference external" href="http://estructura.md">estructura.md</a>. Esto lo debemos hacer completando el mismo proyecto.</p>
+<ol class="arabic simple" start="11">
+<li><p>Instalar el paquete <code class="docutils literal notranslate"><span class="pre">express-session</span></code></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>express-session
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
+<li><p>Agregar la la configuración de la sesión en <code class="docutils literal notranslate"><span class="pre">app.js</span></code>:</p></li>
+</ol>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-session&#39;</span><span class="p">);</span>
+
+<span class="c1">// Lo siguiente va en la sección de configuración del middleware a nivel de aplicación</span>
+<span class="c1">// debajo de la parte en que se agrega urlencoded.</span>
+
+<span class="c1">// Middleware global de sesión.</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">session</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">resave</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// No guarda el objeto en el almacén de sesiones si este no fue modificado durante el procesamiento de la petición.</span>
+<span class="w">    </span><span class="nx">saveUninitialized</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// No guardar sesiones no inicializadas (nuevas y no modificadas) en el almacén.</span>
+<span class="w">    </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;shhhh, very secret&#39;</span><span class="w">  </span><span class="c1">// Clave de cifrado para firmar el ID de la sesión.</span>
+<span class="p">}));</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="13">
+<li><p>Ahora, con el middleware <code class="docutils literal notranslate"><span class="pre">session()</span></code> el objeto <code class="docutils literal notranslate"><span class="pre">req</span></code> va a tener la propiedad  <code class="docutils literal notranslate"><span class="pre">req.session</span></code> que es un objeto de tipos <code class="docutils literal notranslate"><span class="pre">Session</span></code> que contiene la <em>cookie</em> que se usa para pasar información entre el cliente y el servidor.</p></li>
+</ol>
+<p>Probar haciendo log del objeto <code class="docutils literal notranslate"><span class="pre">req.session</span></code> en el método get de la ruta <code class="docutils literal notranslate"><span class="pre">/</span></code> del archivo <code class="docutils literal notranslate"><span class="pre">/routes/index.js</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;*** session:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;ruta /&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Tiene que imprimir en la consola el objeto <code class="docutils literal notranslate"><span class="pre">Session</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">Session</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">_expires</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">originalMaxAge</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recordar borrar todoso los <code class="docutils literal notranslate"><span class="pre">console.log</span></code> que se hayan utilizado para hacer pruebas de funcionamiento.</p>
+</div>
+<ol class="arabic simple" start="14">
+<li><p>Ahora tenemos que modificar el método post de la ruta <code class="docutils literal notranslate"><span class="pre">/login</span></code> del archivo <code class="docutils literal notranslate"><span class="pre">/routes/index.js</span></code> para que cuando el usuario se haya autenticado correctamente se cree la información de la sesión que viaja con la <em>cookie</em>. Vamos a cumplir con las siguientes condiciones:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Si la autenticación es exitosa se crea la sesión, de lo contrario podemos guardar un mensaje de error en la propiedad <code class="docutils literal notranslate"><span class="pre">error</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">session</span></code> de <code class="docutils literal notranslate"><span class="pre">req</span></code>.</p></li>
+<li><p>Cuando creamos/regeneramos (el método se llama “regenerar” y crea o regenera) los datos de la sesión guardamos el nombre del usuario y un mensaje en la propiedad <code class="docutils literal notranslate"><span class="pre">success</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">session</span></code> de <code class="docutils literal notranslate"><span class="pre">req</span></code>.</p></li>
+<li><p>Luego redireccionamos a la ruta de usuario <code class="docutils literal notranslate"><span class="pre">/user</span></code> que es la página que se muestra luego del login.</p></li>
+</ul>
+<p>Nota: Esto se hace con el método <code class="docutils literal notranslate"><span class="pre">req.session.regenerate()</span></code> que es <em>asincrónico</em>, por eso hay que hacerlo dentro de un <em>callback</em> que se le pasa como argumento.</p>
+<p>La modificación de la ruta <code class="docutils literal notranslate"><span class="pre">/login</span></code> queda de la siguiente manera:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">regenerate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">username</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Authenticated as </span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/user&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;La autenticación falló, revise su nombre de usuario y contraseña&#39;</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="15">
+<li><p>Desde el archivo <code class="docutils literal notranslate"><span class="pre">/routes/user.js</span></code> e pueden comprobar los valores de <code class="docutils literal notranslate"><span class="pre">req.session</span></code> haciendo <code class="docutils literal notranslate"><span class="pre">console.log('***</span> <span class="pre">req.session:',</span> <span class="pre">req.session);</span></code> en el método get de <code class="docutils literal notranslate"><span class="pre">/</span></code> (raíz del enrutador) y, en el archivo <code class="docutils literal notranslate"><span class="pre">/routes/index.js</span></code> haciendo <code class="docutils literal notranslate"><span class="pre">console.log('***</span> <span class="pre">session:',</span> <span class="pre">req.session);</span></code> en el método get de <code class="docutils literal notranslate"><span class="pre">/login</span></code> que es para cada caso donde se redirecciona al cliente en caso de éxito o error.</p></li>
+<li><p>De la misma manera que creamos/regeneramos el objeto <code class="docutils literal notranslate"><span class="pre">session</span></code> cuando un usuario se loguea tenemos que borrar los datos de la sesión cuando se desloguea. Para esto creamos la ruta <code class="docutils literal notranslate"><span class="pre">/logut</span></code> con el método get en <code class="docutils literal notranslate"><span class="pre">/routes/index.js</span></code>. A esta ruta se va a redireccionar al usuario cuando presiones el botón de logout y es la que se va a encargar de borrar el objeto <code class="docutils literal notranslate"><span class="pre">session</span></code>. Esto se hace con el método <code class="docutils literal notranslate"><span class="pre">destroy</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">session</span></code>.</p></li>
+</ol>
+<p>Nota: Al igual que <code class="docutils literal notranslate"><span class="pre">regenerate</span></code>, <code class="docutils literal notranslate"><span class="pre">destroy</span></code> es asincrónico y por lo tanto lo que se deba hacer luego de destruida la sesión, en este caso redireccionar al usuario a la página principal, debe hacerse en el <em>callback</em> que se pasa como argumento.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/logout&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Destruye los datos de la sesión que se regeneran para la próxima petición.</span>
+<span class="w">    </span><span class="c1">// El usuario queda deslogueado y se lo redirecciona a la página principal.</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">destroy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="16">
+<li><p>Lo último que falta es un mecanismo para restringir la página privada de la sesión de les usuaries y hacer las redirecciones en caso de que se quiera acceder a las rutas sin haberse registrado.</p></li>
+</ol>
+<p>Para esto vamos a crear un <em>middleware</em> que vamos a agregar a las rutas restringidas de <code class="docutils literal notranslate"><span class="pre">/user</span></code> para que se ejecute <strong>antes</strong> de la función que procesa las peticiones en esas rutas. Este nuevo <em>middleware</em> primero se va a fijar que esté alguno de los datos de registro de la sesión y en base a eso le va a pasar el control a la función que procesa la request en caso de que el usuario esté registrado, de lo contrario va a redireccionar a una ruta pública.</p>
+<p>Para comprobar si el usuario está registrado vamos a usar la propiedad <code class="docutils literal notranslate"><span class="pre">user</span></code> que le agregamos al objeto <code class="docutils literal notranslate"><span class="pre">session</span></code> cuando regeneramos la sesión en <code class="docutils literal notranslate"><span class="pre">/login</span></code>. Dentro de <code class="docutils literal notranslate"><span class="pre">/routes/user.js</span></code> vamos a definir la siguiente función para el módulo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">restricted</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Le pasa el control al próximo middleware que muestra la página de usuario.</span>
+<span class="w">        </span><span class="nx">next</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Guarda un mensaje de error en la sesión y redirecciona a la ruta /login que es pública.</span>
+<span class="w">        </span><span class="c1">// Puede ser otra ruta como _home_ u otra página de error.</span>
+<span class="w">        </span><span class="c1">// No llama a next() por lo que genera una respuesta y corta la cadena de middlewares.</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Access denied!&#39;</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>La función de arriba se declara en <code class="docutils literal notranslate"><span class="pre">/routes/user.js</span></code> luego de la sección de importaciones.</p>
+<ol class="arabic simple" start="17">
+<li><p>En las rutas del módulo user vamos a agregar el <em>middleware</em> que definimos arriba. Tenemos dos opciones, muestro ambas pero vamos a utilizar la segunda.</p></li>
+</ol>
+<p><strong>Primera</strong>: Recuerden que a los métodos HTTP de los enrutadores se les puede pasar la ruta y luego varias funciones que se llama una a continuación de otra con <code class="docutils literal notranslate"><span class="pre">next()</span></code>, si no se llama a <code class="docutils literal notranslate"><span class="pre">next()</span></code> el <em>middleware</em> corta al cadena:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">restricted</span><span class="p">,</span><span class="w"> </span><span class="nx">callbackUser</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/profile&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">restricted</span><span class="p">,</span><span class="w"> </span><span class="nx">callbackProfile</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Nuestro proyecto, si hicieramos esto, queda así:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Para /user</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">restricted</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;*** session:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Página de usuario/a: ruta /user&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Para /user/profile.</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/profile&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">restricted</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Página de configuración de usuario/a: ruta /user/profile&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Segunda</strong>: Pero como todas las rutas del enrutador de usuario van a ser restringidas podemos utilizar el método <code class="docutils literal notranslate"><span class="pre">use</span></code> a nivel de enrutador y así nos ahorramos tener que agregar una función extra a cada nueva ruta que queramos agregar. Entonces, gracias a la arquitectura de <code class="docutils literal notranslate"><span class="pre">express</span></code> podemos instalar el <em>callback</em> inmediatamente después de declarada la función <code class="docutils literal notranslate"><span class="pre">restrict</span></code>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">restricted</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">next</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Access denied!&#39;</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">restrict</span><span class="p">);</span>
+
+<span class="c1">// ...Luego vienen get / y get /profile que ya estaban...</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="18">
+<li><p>Comprobar que todo ande con las redirecciones y los <code class="docutils literal notranslate"><span class="pre">console.log</span></code> que habíamos agregado en <code class="docutils literal notranslate"><span class="pre">/user</span></code> y <code class="docutils literal notranslate"><span class="pre">/login</span></code>. Usar las rutas <code class="docutils literal notranslate"><span class="pre">/login</span></code>, <code class="docutils literal notranslate"><span class="pre">/signup</span></code> para registrarse y <code class="docutils literal notranslate"><span class="pre">/logout</span></code> para salir, luego probar la ruta <code class="docutils literal notranslate"><span class="pre">/user</span></code> estando logueado o no, ver que el navegador muestre las páginas que le dijimos en cada caso y lo que se imprime en la terminal del servidor.</p></li>
+</ol>
+</section>
+<section id="actividad">
+<h2>Actividad<a class="headerlink" href="#actividad" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>En <code class="docutils literal notranslate"><span class="pre">/routes/index.js</span></code>, agregar un <em>middleware</em> (similar a como hicimos con <code class="docutils literal notranslate"><span class="pre">restricted</span></code> arriba) pero <strong>solo</strong> para los métodos get y post de las rutas <code class="docutils literal notranslate"><span class="pre">/login</span></code> y <code class="docutils literal notranslate"><span class="pre">/signup</span></code> que redireccione a la página de usuario si se quiere acceder cuando el usuario está logueado.</p></li>
+</ol>
+<p>Para esto solo necesitamos una función que compruebe si la propiedad <code class="docutils literal notranslate"><span class="pre">user</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">req.session</span></code> está definida. Si está definida redireccionamos a la ruta <code class="docutils literal notranslate"><span class="pre">/user</span> </code>, de lo contrario se llama a la función <code class="docutils literal notranslate"><span class="pre">next()</span></code> para que continúe la cadena de <em>middlewares</em>. Ayuda: Esta función no se puede instalar con <code class="docutils literal notranslate"><span class="pre">use</span></code>, hay que utilizar la opción primera del punto 17.</p>
+<ol class="arabic simple" start="2">
+<li><p>En <code class="docutils literal notranslate"><span class="pre">/logout</span></code> se podría agregar una comprobación también si no hay usuario/a logueado/a y redireccionar. Por seguridad siempre hay que contemplar que alguien puede tipear cualquier dirección en el servidor y las rutas deben estar protegidas, pero no vamos a hacer hincapié en esto salvo que sea necesario. Una solución puede ser pasar la ruta <code class="docutils literal notranslate"><span class="pre">/logout</span></code> con su <em>callback</em> a <code class="docutils literal notranslate"><span class="pre">/user/logout</span></code> ya que el <em>middleware</em> <code class="docutils literal notranslate"><span class="pre">restricted</span></code> de ese enrutador siempre comprueba que el usuario esté logueado.</p></li>
+<li><p>Comprobar que todas las rutas funcionen con todos los métodos como corresponde tanto con el/la usuario/a logueado/da como no logueado/da.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span>
+<span class="o">/</span><span class="n">about</span>
+<span class="o">/</span><span class="n">login</span> <span class="p">(</span><span class="n">con</span> <span class="n">get</span> <span class="n">y</span> <span class="n">post</span><span class="p">)</span>
+<span class="o">/</span><span class="n">signup</span> <span class="p">(</span><span class="n">con</span> <span class="n">get</span> <span class="n">y</span> <span class="n">post</span><span class="p">)</span>
+<span class="o">/</span><span class="n">user</span>
+<span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">profile</span>
+<span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">logout</span> <span class="p">(</span><span class="n">para</span> <span class="n">desloguear</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Borrar el archivo de la base de datos (<code class="docutils literal notranslate"><span class="pre">user.db</span></code>) para volver a empezar las pruebas de cero. Ver la consola del servidor y comprobar que todos los <code class="docutils literal notranslate"><span class="pre">console.log</span></code> funcionen correctamente a cada paso a cada petición para cada dirección (home, about, signup, login, user). Luego volver a comentar los <code class="docutils literal notranslate"><span class="pre">console.log</span></code> para que no quede la terminal llena de mensajes. Estos logs los creamos solo para ver cosas y comprobar que cada ruta ande, si algo falla los volvemos a poner de a uno según la ruta que queramos ver.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa02/ch09"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#password-hash">Password hash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-y-signup">Login y signup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#express-session">express-session</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Enlaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session">Session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actividad">Actividad</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

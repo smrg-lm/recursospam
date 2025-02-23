@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Programación orientada a objetos en JavaScript &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa01/ch04/clases';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Movimientos simples" href="../ch05/movimiento.html" />
+    <link rel="prev" title="Funciones" href="../ch03/funciones.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch01/nodejs-commonjs.html">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa02/ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa01/ch04/clases.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa01/ch04/clases.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Programación orientada a objetos en JavaScript</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototipos">Prototipos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clases">Clases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-atributos-de-una-clase">Propiedades (atributos de una clase)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-funciones-procedimientos-de-una-clase">Métodos (funciones/procedimientos de una clase)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos-de-las-clases">Elementos de las clases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visibilidad-publico-o-privado">Visibilidad (público o privado)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-acceso-get-set">Métodos de acceso (get, set)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locacion-clase-o-instancia">Locación (clase o instancia)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#herencia">Herencia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estilo-previo-a-es6">Estilo previo a ES6</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="programacion-orientada-a-objetos-en-javascript">
+<h1>Programación orientada a objetos en JavaScript<a class="headerlink" href="#programacion-orientada-a-objetos-en-javascript" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Descarga la <a class="reference internal" href="#./ejemplos.zip"><span class="xref myst">Carpeta de Ejemplos</span></a></p>
+</div>
+<section id="prototipos">
+<h2>Prototipos<a class="headerlink" href="#prototipos" title="Link to this heading">#</a></h2>
+<p>En realidad, JavaScript no es un lenguaje orientado a objetos sino basado en prototipos, lo cuál es un paradigma/modelo ligeramente diferente. En la programación basada en prototipos no hay clases. Todos los objetos se crean a partir de otros objetos que, en última instancia, se crean a partir de un objeto raíz predefinido en el lenguaje, esto es el objeto <code class="docutils literal notranslate"><span class="pre">Object</span></code>.</p>
+<p>Como vimos con los objetos literales, los objetos son estructuras de datos similar a los diccionarios, una collección dinámica de pares llave-valor donde la llave es el nombre de una propiedad o atributo del objeto y el valor es la propiedad en sí. Cuando a una llave le asignamos una función podemos crear métodos si usamos la palabra reservada <code class="docutils literal notranslate"><span class="pre">this</span></code> que es una pseudo variable que refiere a un objeto determinado según el contexto pero, básicamente, dentro de un objeto refiere al mismo objeto.</p>
+<p>Si, además, a los objetos les agregamos una propiedad que refiere a otro objeto que fue usado como prototipo del objeto actual y del cual copia sus datos y fucniones tenemos los ingredientes básicos de la programación basada en prototipos. Lo único que falta es un mecanismo para crear dinámicamente la copia de los datos de los objetos prototipo a los objetos nuevos y esto se logra con el operador <code class="docutils literal notranslate"><span class="pre">new</span></code> que copia la estructura de datos en otro espacio de memoria y llama a una función, constructura, para inicializar las propiedades con los parámetros que le pasemos al nuevo objeto que estamos creando.</p>
+<p>Pero sí, en la práctica esto es algo más instrincado que su mera escencia. No vamos a ver todos los detalles, pormenores y variantes históricas que hay y se mantienen por cuestiones de compatibilidad. Vamos a usar las características que agrega la versión seis del estándar que facilitan la programación orientada a objetos en relación a los paradigmas más difundidos por otros lenguajes (C++/Java). Vamos a usar clases como plantillas que especifican cómo crear objetos con propiedades y métodos.</p>
+</section>
+<section id="clases">
+<h2>Clases<a class="headerlink" href="#clases" title="Link to this heading">#</a></h2>
+<p>En base al sistema de prototipos, el estándar <em>ES6</em> agrega la sintáxis necesaria para definir clases. La sintáxis de clases simplifica muchos conceptos de la programación orientada a objetos y permite que el código sea más claro y conciso agregando sus propias reglas sintácticas.</p>
+<p>La definición de una clase consiste en la palabra reservada <code class="docutils literal notranslate"><span class="pre">class</span></code>, seguida del nombre de la clase y los corchetes que definen el cuerpo de la clase donde se define su contenido.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">MiClase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Cuerpo de la clase.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Para poder crear una clase con el operador <code class="docutils literal notranslate"><span class="pre">new</span></code> es necesario definir un método llamado <em>constructor</em> (el identificador del método debe llamarse de esa manera) que es quien se encarga de inicializar la instancia de la clase con sus valores por defecto o los argumentos que se le pasen para su creación si el constructor define parámetros.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Punto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Las clases siempre deben ser declaradas antes de su uso dentro de un bloque de código, es decir, no se hace <em>hoisting</em> como con las funciones comunes.</p>
+</div>
+<p>Luego, para crear un objeto de la clase definida se usa el operador <code class="docutils literal notranslate"><span class="pre">new</span></code> de la siguiente manera:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">instancia1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Punto</span><span class="p">;</span><span class="w">  </span><span class="c1">// Usa los parámetros por defecto.</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">instancia2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Punto</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span><span class="w">  </span><span class="c1">// Crea un punto en la posición &lt;100, 100&gt;.</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instancia1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Punto { x: 0, y: 0 }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instancia2</span><span class="p">);</span><span class="w">  </span><span class="c1">// Punto { x: 100, y: 100 }</span>
+</pre></div>
+</div>
+<p>El operador <code class="docutils literal notranslate"><span class="pre">new</span></code> busca el método llamado <em>constructor</em> de la clase y lo evalúa al crear los objetos de instancia. Si la clase no tuviera un método llamado <em>constructor</em> se llama al constructor por defecto que está definidos en la superclase. La superclase por defecto es <code class="docutils literal notranslate"><span class="pre">Object</span></code> y su constructor no hace nada. Si el constructor no recibe parámetros se pueden omitir los paréntesis al crear un objeto con <code class="docutils literal notranslate"><span class="pre">new</span></code>.</p>
+<p>La sintáxis empleada para crear objetos a partir de clases se encarga de organizar el sistema de prototipos. Al crear un objeto <code class="docutils literal notranslate"><span class="pre">Punto</span></code> el prototipo del objeto creado es la clase que lo define.</p>
+<p>También es importante saber que el constructor retorna un valor y ese valor es el que devuelve la expresión <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Punto</span></code> cuando se crea el objeto que luego se asigna a una variable. Por defecto, el constructor retorna <code class="docutils literal notranslate"><span class="pre">this</span></code> que es la instancia que está siendo creada como veremos a continuación. Hay que tener cuidado con esto porque si se usa la expresión <code class="docutils literal notranslate"><span class="pre">return</span></code> y se retorna otro tipo de objeto que no sea primitivo o <code class="docutils literal notranslate"><span class="pre">this</span></code> la lógica de prototipos del objeto creado puede no ser la esperada. [<strong>REVISAR REDACCIÓN</strong>]</p>
+<section id="propiedades-atributos-de-una-clase">
+<h3>Propiedades (atributos de una clase)<a class="headerlink" href="#propiedades-atributos-de-una-clase" title="Link to this heading">#</a></h3>
+<p>Dentro de la función <em>constructor</em> del ejemplo anterior, y las desmás funciones que se definan dentro del cuerpo de una clase, se debe usar la palabra reservada <code class="docutils literal notranslate"><span class="pre">this</span></code> que, en estos casos, refiere a la instancia del objeto creado a partir de la clase. Por eso, al escribir <code class="docutils literal notranslate"><span class="pre">this.x</span> <span class="pre">=</span> <span class="pre">x</span></code> se le está creando un campo (propiedad/atributo) <code class="docutils literal notranslate"><span class="pre">x</span></code> al nuevo objeto descrito arriba.</p>
+<p>Las propiedades también se pueden definir de manera similar a como se hace con las propiedades en la notación de objetos literales. Dentro del cuerpo de una clase, en vez de usar los dos puntos y la coma para crear propiedades se pueden crear expresiones que asignen valores a identificadores (nombres de variables) y estos se convierten en propiedades.</p>
+<p>El siguiente ejemplo crea una clase sin constructor que contiene las propiedades <code class="docutils literal notranslate"><span class="pre">x</span></code> e <code class="docutils literal notranslate"><span class="pre">y</span></code> que se inicializan a los valores asignados cuando se crea el objeto:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Punto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Punto</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instancia</span><span class="p">);</span><span class="w">  </span><span class="c1">// Punto { x: 0, y: 0 }</span>
+</pre></div>
+</div>
+</section>
+<section id="metodos-funciones-procedimientos-de-una-clase">
+<h3>Métodos (funciones/procedimientos de una clase)<a class="headerlink" href="#metodos-funciones-procedimientos-de-una-clase" title="Link to this heading">#</a></h3>
+<p>De la misma manera que pasa con las variables que se convierten en propiedades, en vez de crear explícitamente pares llave-valor, como hacemos con los objetos literales, al crear una función dentro del cuperpo de una clase esta pasa a ser un método con el nombre que define la función.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Punto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">métodoConReturn</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">métodoSinReturn</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Punto</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instancia</span><span class="p">);</span><span class="w">  </span><span class="c1">// Punto { x: 0, y: 0 } Los métodos no se listan como propiedades al imprimir.</span>
+
+<span class="nx">instancia</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span><span class="w">  </span><span class="c1">// Se le asigna el valor 10 a la propiedad x.</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">instancia</span><span class="p">.</span><span class="nx">métodoConReturn</span><span class="p">();</span><span class="w">  </span><span class="c1">// Llamada al método que multiplica la propiedad x por 10;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100</span>
+</pre></div>
+</div>
+<p>Si un método no usa la expresión <code class="docutils literal notranslate"><span class="pre">return</span></code> para devolver un valor en particular, por defecto, al llamar a un método se retorna el valor <code class="docutils literal notranslate"><span class="pre">undefined</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">instancia</span><span class="p">.</span><span class="nx">métodoSinReturn</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span><span class="w">  </span><span class="c1">// undefined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instancia</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100;</span>
+</pre></div>
+</div>
+<p>Para hacer que los métodos sean <em>concatenables</em> estos deben retornar explícitamente <code class="docutils literal notranslate"><span class="pre">this</span></code>. Esto es algo que se ve en la documentación de muchas librerías y posibilita una técnica que se denomina <em>llamadas en cascada</em> que posibilita llamar sucesivamente distintos métodos sobre un mismo objeto. Por ejemplo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">obj</span><span class="p">.</span><span class="nx">método1</span><span class="p">().</span><span class="nx">método2</span><span class="p">().</span><span class="nx">método3</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>En vez de escribir todo por separado:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">obj</span><span class="p">.</span><span class="nx">método1</span><span class="p">();</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">método2</span><span class="p">();</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">método3</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Siempre hay que leer la documentación para saber qué hace un método y cómo debe ser usado.</p>
+</section>
+</section>
+<section id="elementos-de-las-clases">
+<h2>Elementos de las clases<a class="headerlink" href="#elementos-de-las-clases" title="Link to this heading">#</a></h2>
+<p>De los elementos que se pueden definir en una clase hasta ahora vimos solo dos, las propiedades y los métodos. Estos son los que más vamos a usar, pero también existen modificadores que cambian el comportamiento de las propiedades y los métodos que se enumeran brevemente a continuación.</p>
+<section id="visibilidad-publico-o-privado">
+<h3>Visibilidad (público o privado)<a class="headerlink" href="#visibilidad-publico-o-privado" title="Link to this heading">#</a></h3>
+<p>Para propiciar el principio de encapsulación de los datos y las acciones, la notación de clases posibilita la definición de propiedades y métodos privados. Por defecto, todos las propiedades y métodos son públicos, es decir, se pueden acceder desde fuera de los objetos. Para hacer que las propiedades y los métodos sean privados se utiliza el caracter <code class="docutils literal notranslate"><span class="pre">#</span></code> como prefijo de los identificadores.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Punto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Propiedades privadas.</span>
+<span class="w">    </span><span class="err">#</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="err">#</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="err">#</span><span class="nx">res</span><span class="p">;</span><span class="w">  </span><span class="c1">// undefined</span>
+
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Inicialización de propiedades privadas.</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="err">#</span><span class="nx">cálculoInterno</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Método privado que calcula cosas.</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">resultado</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Método público que exterioriza el resultado.</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">cálculoInterno</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">res</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Punto</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">resultado</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Si se intenta acceder a las propiedades o métodos privados desde fuera de la clase se produce un error de sintáxis:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="err">#</span><span class="nx">res</span><span class="p">);</span><span class="w"> </span><span class="c1">// SyntaxError: Private field &#39;#res&#39; must be declared in an enclosing class</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="err">#</span><span class="nx">cálculoInterno</span><span class="p">());</span><span class="w">  </span><span class="c1">// SyntaxError: Private field &#39;#cálculoInterno&#39; must be declared in an enclosing class</span>
+</pre></div>
+</div>
+<p>Las propiedades y métodos privados son siempre <em>friend</em>, pueden ser accedidos desde métodos de otros objetos siempre que sean instancias de la misma clase.</p>
+</section>
+<section id="metodos-de-acceso-get-set">
+<h3>Métodos de acceso (get, set)<a class="headerlink" href="#metodos-de-acceso-get-set" title="Link to this heading">#</a></h3>
+<p>Siguiendo las prácticas de la POO, las propiedades de los objetos se pueden definir como privados y alentar a que el acceso y el cambio de estado que se hace sobre esos valores sea mediante métodos que garanticen la consistencia al estado interno del objeto.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Punto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">#</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="err">#</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">x</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;llama a set x&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">x</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;llama a get x&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">x</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">y</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;llama a set y&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">y</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;llama a get y&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Punto</span><span class="p">();</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span><span class="w">  </span><span class="c1">// Llama a set x.</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span><span class="w">  </span><span class="c1">// Llama a set y.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100 200. Llama a get x y get y.</span>
+</pre></div>
+</div>
+</section>
+<section id="locacion-clase-o-instancia">
+<h3>Locación (clase o instancia)<a class="headerlink" href="#locacion-clase-o-instancia" title="Link to this heading">#</a></h3>
+<p>Las propiedades y los métodos también pueden pertenecer a las instancias o a las clases. Esto es una regla de alcance muy común en la POO. Por defecto todas las propiedades y métodos son de instancia.</p>
+<p>Los elementos que pertenecen a las clases se almacenan en la clase como como objeto en sí mismo. Para definir propiedades y métodos de clase se usa el modificador <code class="docutils literal notranslate"><span class="pre">static</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Estático</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">campo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Campo de la clase.&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">método</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Método de la clase.&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Estático</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">campo</span><span class="p">);</span><span class="w">  </span><span class="c1">// undefinded, campo no está definido para la instancia.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Estático</span><span class="p">.</span><span class="nx">campo</span><span class="p">);</span><span class="w">  </span><span class="c1">// Campo de la clase</span>
+
+<span class="nx">a</span><span class="p">.</span><span class="nx">campo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Propiedad de la instancia&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Se define campo como propiedad de la instancia (no hacer por error).</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">campo</span><span class="p">);</span><span class="w">  </span><span class="c1">// Propiedad de la instancia.</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Estático</span><span class="p">.</span><span class="nx">campo</span><span class="p">);</span><span class="w">  </span><span class="c1">// Campo de la clase siempre existe en la clase.</span>
+
+<span class="nx">Estático</span><span class="p">.</span><span class="nx">método</span><span class="p">();</span><span class="w">  </span><span class="c1">// Método de clase.</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">método</span><span class="p">();</span><span class="w">  </span><span class="c1">// Error, método no es una función (no está definido para la instancia).</span>
+</pre></div>
+</div>
+<p>Los modificadores <code class="docutils literal notranslate"><span class="pre">get</span></code> y <code class="docutils literal notranslate"><span class="pre">set</span></code> se pueden complementar con <code class="docutils literal notranslate"><span class="pre">static</span></code> para crear métodos de acceso a propiedades de la clase.</p>
+</section>
+</section>
+<section id="herencia">
+<h2>Herencia<a class="headerlink" href="#herencia" title="Link to this heading">#</a></h2>
+<p>La herencia se define con la palabra reservada <code class="docutils literal notranslate"><span class="pre">extends</span></code> de la siguiente manera:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">SuperClase</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Cuerpo */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">SubClase</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">SuperClase</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Cuerpo */</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Para acceder a los atributos y el constructor de la superclase se utiliza la palabra reservada <code class="docutils literal notranslate"><span class="pre">super</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">SuperClase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">superval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">SubClase</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">SuperClase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span><span class="w"> </span><span class="nx">value2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">(</span><span class="nx">value1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Inicializa superval.</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">subval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SubClase</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">superval</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">subval</span><span class="p">);</span><span class="w">  </span><span class="c1">// 1 2</span>
+</pre></div>
+</div>
+<p>Al sobreescribir el constructor en una subclase siempre es necesario llamar a <code class="docutils literal notranslate"><span class="pre">super()</span></code> para inicializar las propiedades heredadas de la superclase antes de usar la palabra reservada <code class="docutils literal notranslate"><span class="pre">this</span></code>. Esto es así aunque el constructor de la superclase no esté definido o no reciba argumentos.</p>
+<p>Las propiedades y métodos heredados se pueden sobreescribir en una subclase y se puede acceder a la implementación de la superclase usando <code class="docutils literal notranslate"><span class="pre">super</span></code> de la misma manera que <code class="docutils literal notranslate"><span class="pre">this</span></code>. Pero los que sean privados no se pueden acceder desde las subclases (mantiene el principio de encapsulamiento).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">SuperClase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">#</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">123</span><span class="p">;</span><span class="w">  </span><span class="c1">// Las propiedades privadas no se pueden acceder desde las subclases.</span>
+
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">superval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">modifica</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;llama a super&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">SubClase</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">SuperClase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span><span class="w"> </span><span class="nx">value2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">(</span><span class="nx">value1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Inicializa superval.</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">subval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">modifica</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;llama a sub&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="nx">modifica</span><span class="p">();</span><span class="w">  </span><span class="c1">// Llama al método homónimo de la superclase.</span>
+<span class="w">        </span><span class="c1">// super.#x = 321;  // Error, no se pueden acceder los atributos privados de la superclase.</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SubClase</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">modifica</span><span class="p">());</span>
+</pre></div>
+</div>
+</section>
+<section id="enlaces">
+<h2>Enlaces<a class="headerlink" href="#enlaces" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_classes">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_classes</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects#defining_getters_and_setters">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects#defining_getters_and_setters</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks</a></p>
+<section id="estilo-previo-a-es6">
+<h3>Estilo previo a ES6<a class="headerlink" href="#estilo-previo-a-es6" title="Link to this heading">#</a></h3>
+<p>Existe en código heredado, <strong>no lo vamos a ver, es más complicado</strong>. Para crear objetos se usaban funciones como constructores de objetos donde se definían los valores de las variables de instancia y objetos literales que se utilizaban como el prototipo para agregar métodos. La construcción de los objetos se hacía mediante métodos estáticos de <code class="docutils literal notranslate"><span class="pre">Object</span></code>, <code class="docutils literal notranslate"><span class="pre">create</span></code>, <code class="docutils literal notranslate"><span class="pre">assign</span></code> que definían la lógica de esta funcionalidad. Las propiedades <code class="docutils literal notranslate"><span class="pre">__proto__</span></code> (instancia) y <code class="docutils literal notranslate"><span class="pre">prototype</span></code> (en los prototipos(create)/constructores(assign), para la cadena de prototipos hasta <code class="docutils literal notranslate"><span class="pre">null</span></code>) son convenciones, para acceder al prototipo hay que usar el método estátido <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf(obj)</span></code>.</p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/construct">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/construct</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype</a></p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor</a></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa01/ch04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ch03/funciones.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Funciones</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ch05/movimiento.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Movimientos simples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototipos">Prototipos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clases">Clases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-atributos-de-una-clase">Propiedades (atributos de una clase)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-funciones-procedimientos-de-una-clase">Métodos (funciones/procedimientos de una clase)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos-de-las-clases">Elementos de las clases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visibilidad-publico-o-privado">Visibilidad (público o privado)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-acceso-get-set">Métodos de acceso (get, set)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locacion-clase-o-instancia">Locación (clase o instancia)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#herencia">Herencia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enlaces">Enlaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estilo-previo-a-es6">Estilo previo a ES6</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

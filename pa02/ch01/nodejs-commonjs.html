@@ -1,0 +1,765 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Node.js y módulos CommonJS &#8212; Recursos de Programación para Arte y Música</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pa02/ch01/nodejs-commonjs';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Servidor HTTP básico" href="../ch02/cliente-servidor.html" />
+    <link rel="prev" title="Debugueo" href="../../pa01/debuging.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recursos de Programación para Arte y Música - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Recursos de Programación para Arte y Música - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Recursos de Programación para Música y Arte
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Básicos en p5.js</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch01/intro-vsjsp5.html">Instroducción a JavaScript y p5.js utilizando VSCode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/config-vsc.html">Entorno de desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-js.html">Recursos de JavasScript utilizados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch01/intro-p5.html">Introducción a p5.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch02/estructuras-dyc.html">Estructuras de datos y de control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/datos.html">Estructuras de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch02/control.html">Estructuras de control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch03/funciones.html">Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch04/clases.html">Programación orientada a objetos en JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch05/movimiento.html">Movimientos simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch06/part%C3%ADculas.html">Sistemas de partículas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pa01/ch07/intro.html">Sonido</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/audio-digital.html">Audio Digital</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pa01/ch07/p5sonido.html">Librería integrada p5.sound.js</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/ch08/p5imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pa01/debuging.html">Debugueo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Arquitectura Cliente-Servidor en Node.js</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Node.js y módulos CommonJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/cliente-servidor.html">Servidor HTTP básico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/nodejs-express.html">Entorno de desarrollo Node.js + Express</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpa02/ch01/nodejs-commonjs.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pa02/ch01/nodejs-commonjs.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Node.js y módulos CommonJS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizacion-de-la-linea-de-comandos">Utilización de la línea de comandos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-los-comandos">Estructura de los Comándos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node-js">Node.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion">Instalación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modo-repl">Modo REPL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos-globales-de-node-js-y-el-navegador">Objetos globales de Node.js y el navegador</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejecutar-programas-desde-archivos">Ejecutar programas desde archivos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-en-node-js">Módulos en Node.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-de-usuario">Módulos de usuario</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="node-js-y-modulos-commonjs">
+<h1>Node.js y módulos CommonJS<a class="headerlink" href="#node-js-y-modulos-commonjs" title="Link to this heading">#</a></h1>
+<p>Descarga la <a class="reference internal" href="#./ejemplos.zip"><span class="xref myst">Carpeta de Ejemplos</span></a></p>
+<section id="utilizacion-de-la-linea-de-comandos">
+<h2>Utilización de la línea de comandos<a class="headerlink" href="#utilizacion-de-la-linea-de-comandos" title="Link to this heading">#</a></h2>
+<p>En Unix:</p>
+<ul class="simple">
+<li><p>Bash</p></li>
+<li><p>Zsh</p></li>
+<li><p>Otros</p></li>
+</ul>
+<p>En Windows:</p>
+<ul class="simple">
+<li><p>Símbolo de Sistema / Command Prompt / cmd.ex</p></li>
+<li><p>PowerShell.</p></li>
+</ul>
+<p>Referencia de comandos Windows (cmd.exe):</p>
+<p><a class="reference external" href="https://es.wikipedia.org/wiki/S%C3%ADmbolo_del_sistema_de_Windows">https://es.wikipedia.org/wiki/Símbolo_del_sistema_de_Windows</a></p>
+<section id="estructura-de-los-comandos">
+<h3>Estructura de los Comándos<a class="headerlink" href="#estructura-de-los-comandos" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nombre<span class="w"> </span>arg1<span class="w"> </span>arg2<span class="w"> </span>arg3
+</pre></div>
+</div>
+<p>Primero se escribe el nombre del comando y luego, opcionalmente, una lista de argumentos. Los argumentos se separan por <strong>espacios</strong> y pueden ser muy variados en cuanto a su formato.</p>
+<p>Existen distintas convenciones para los comandos.</p>
+</section>
+</section>
+<section id="node-js">
+<h2>Node.js<a class="headerlink" href="#node-js" title="Link to this heading">#</a></h2>
+<p>En la primera mitad, hemos aprendido el lenguaje JavaScript utilizando la API de p5.js para crear animaciones dentro del elemento <code class="docutils literal notranslate"><span class="pre">&lt;canvas&gt;</span></code> de HTML y algunos otros elementos HTML soportados por esta API.</p>
+<p>Venimos utilizando, la extensión <code class="docutils literal notranslate"><span class="pre">Live</span> <span class="pre">Server</span></code> de vscode para crear un servidor local junto con la extensión <code class="docutils literal notranslate"><span class="pre">p5.vscode</span></code> que crea uns estructura de página web básica (js, html, css, json).</p>
+<p>Incluso vimos cómo funciona una API orientada a objetos muy simple que hiciemos para las escenas y los botones del trabajo integrador de la primera mitad… Las clases <code class="docutils literal notranslate"><span class="pre">Navegador</span></code> y <code class="docutils literal notranslate"><span class="pre">Pantalla</span></code> eran dos componentes de nuestra librería que debíamos saber utilizar según la lógica de diseño que proponían.</p>
+<p>En esta segunda mitad le vamos a utilizar JavaScript direcatamente para crear nuestro propio servidor web con <code class="docutils literal notranslate"><span class="pre">Node.js</span></code> y sus librerías (distintas APIs).</p>
+<p>¿Qué es <code class="docutils literal notranslate"><span class="pre">Node.js</span></code>?</p>
+<ul class="simple">
+<li><p>Es una tecnología relativamente nueva (2009)</p></li>
+<li><p>Unifica el lenguaje de programación del <em>backend</em> con el <em>frontend</em>.</p></li>
+<li><p>Es un <strong>entorno de ejecución</strong> y un <strong>(eco)sistema de librerías</strong> para interactuar con el sistema operativo, crear servidores web, interactuar con bases de datos e incluso aplicaciones de escritorio.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Node.js agrega sus propios módulos y objetos globales (ver más abajo) además o en vez de los propios de JavaScript en el navegador. Siempre hay que tener en cuenta qué objetos o módulos estamos usando y en qué contexto de ejecución.</p>
+</div>
+<section id="instalacion">
+<h3>Instalación<a class="headerlink" href="#instalacion" title="Link to this heading">#</a></h3>
+<p>Se descarga desde:</p>
+<p><a class="reference external" href="https://nodejs.org/es">https://nodejs.org/es</a></p>
+<p>Hay varias versiones, vamos a utilizar la última versión <em>LTS</em> (Long Term Support) porque es estable y tienen soporte a largo plazo. Hay otras versiones que se actualizan con nuevas caracterísiticas y también están disponibles las versiones anteriores pero para evitar conflictos con las versiones de node y las librerías nos vamos a quedar la versión LTS al momento de iniciar esta segunda parte.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mientras que las versión más nuevas se actualiza más rápido (cambian y agregan cosas). Esto es importante para la compatibilidad aunque los proyecto en Node.js guardan las versiones de las librerías como veremos más adelante.</p>
+</div>
+<p>Para Windows el entorno Node.js viene con un instalador. Se puede instalar con la configuración por defecto y tiene que andar bien (e.j. “siguiente a todo”).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Puede que haya que cerrar y volver a abrir vscode para que se actualicen las variables de entorno, si van a usar la terminal desde vscode.</p>
+</div>
+<p>Para probar la instalación escribir en la terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>que tiene que devolver el número de la versión que descargaron, por ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>v20.17.0
+</pre></div>
+</div>
+<blockquote>
+<div><p>Nota. Por si las dudas, para trabajos que se pueden quedar guardados durante años, conviene anotar la versión de node que se está utilizando. Las versiones de las librerías pueden andar o no con distintas versiones de node.</p>
+</div></blockquote>
+</section>
+<section id="modo-repl">
+<h3>Modo REPL<a class="headerlink" href="#modo-repl" title="Link to this heading">#</a></h3>
+<p>Si se escribe solo el comando <code class="docutils literal notranslate"><span class="pre">node</span></code> en la terminal el intérprete se ejecuta en modo <em>REPL</em> (Read Eval Print Poop). Del modo REPL se puede salir con <code class="docutils literal notranslate"><span class="pre">ctrl-c</span></code> (dos veces), <code class="docutils literal notranslate"><span class="pre">ctrl-d</span></code> (dos veces) o evaluando <code class="docutils literal notranslate"><span class="pre">.exit</span></code> (nótese el punto al inicio) como comando o utilizando el método <code class="docutils literal notranslate"><span class="pre">exit</span></code> del objeto integrado <code class="docutils literal notranslate"><span class="pre">process</span></code>. Esto es importante por si algo sale mal.</p>
+<p>Ejemplos en modo REPL:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Función flecha como callback (función de respuesta).</span>
+<span class="c1">// No deja de correr, no puedo ver los comandos que escribo</span>
+<span class="c1">// ¿Cómo salgo?</span>
+<span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hola&#39;</span><span class="p">),</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">process</span><span class="p">.</span><span class="nx">version</span><span class="w">  </span><span class="c1">// Versión de Node.js</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span><span class="w">  </span><span class="c1">// Sale del programa intérprete (modo REPL).</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dentro del intérprete de Node.js, el objeto <code class="docutils literal notranslate"><span class="pre">process</span></code> es el equivalente en el sistema operativo a <code class="docutils literal notranslate"><span class="pre">window</span></code> en el navegador (en node no hay objeto window y viceversa). Ver más abajo.</p>
+</div>
+<p>El REPL tiene ayuda integrada, se puede acceder tipeando <code class="docutils literal notranslate"><span class="pre">.help</span></code>. Los comandos con punto son específicos del REPL de Node.js, no existen en otro contexto.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>.help
+.break<span class="w">    </span>Sometimes<span class="w"> </span>you<span class="w"> </span>get<span class="w"> </span>stuck,<span class="w"> </span>this<span class="w"> </span>gets<span class="w"> </span>you<span class="w"> </span>out
+.clear<span class="w">    </span>Alias<span class="w"> </span><span class="k">for</span><span class="w"> </span>.break
+.editor<span class="w">   </span>Enter<span class="w"> </span>editor<span class="w"> </span>mode
+.exit<span class="w">     </span>Exit<span class="w"> </span>the<span class="w"> </span>REPL
+.help<span class="w">     </span>Print<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message
+.load<span class="w">     </span>Load<span class="w"> </span>JS<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>REPL<span class="w"> </span>session
+.save<span class="w">     </span>Save<span class="w"> </span>all<span class="w"> </span>evaluated<span class="w"> </span>commands<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>REPL<span class="w"> </span>session<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>file
+
+Press<span class="w"> </span>Ctrl+C<span class="w"> </span>to<span class="w"> </span>abort<span class="w"> </span>current<span class="w"> </span>expression,<span class="w"> </span>Ctrl+D<span class="w"> </span>to<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>the<span class="w"> </span>REPL
+</pre></div>
+</div>
+<p>Desde la terminal, también se pueden evaluar una expresión de JavaSript utilizando el comando <code class="docutils literal notranslate"><span class="pre">node</span></code> con el flag <code class="docutils literal notranslate"><span class="pre">-e</span></code>, esto es una característica de mucho lenguajes interpretados:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="n">-e</span> <span class="s2">&quot;console.log(2 + 2)&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="objetos-globales-de-node-js-y-el-navegador">
+<h3>Objetos globales de Node.js y el navegador<a class="headerlink" href="#objetos-globales-de-node-js-y-el-navegador" title="Link to this heading">#</a></h3>
+<p>Objetos comúnes del navegador:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nb">window</span><span class="w">  </span><span class="c1">// Ventana del navegador.</span>
+<span class="nb">document</span><span class="w">  </span><span class="c1">// Docuemnto abierto en la ventanda.</span>
+<span class="nx">console</span><span class="w">  </span><span class="c1">// Está en ambos.</span>
+</pre></div>
+</div>
+<p>Objetos globales Node.js:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">process</span><span class="w">  </span><span class="c1">// Entorno de ejecución (simil window en el navegador).</span>
+<span class="nx">os</span><span class="w">  </span><span class="c1">// Interacción con el sistema operativo.</span>
+<span class="nx">console</span><span class="w">  </span><span class="c1">// Está en ambos.</span>
+<span class="nx">module</span><span class="w">  </span><span class="c1">// Es otro tipo de objeto distinto que refiere al módulo acutal (para imports).</span>
+<span class="nx">require</span><span class="w">  </span><span class="c1">// Es una función de Node.js que se utiliza para importar módulos (hay distintas maneras he ES6+).</span>
+</pre></div>
+</div>
+<p>Variables globales e Node.js que existen solo cuando se ejecutan programas desde archivos:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">__dirname</span><span class="w">  </span><span class="c1">// Camino al directorio del archivo que se está evaluando (no existe en repl) es una cadena.</span>
+<span class="nx">__filename</span><span class="w">  </span><span class="c1">// Ídem, pero con el nombre de archivo.</span>
+</pre></div>
+</div>
+</section>
+<section id="ejecutar-programas-desde-archivos">
+<h3>Ejecutar programas desde archivos<a class="headerlink" href="#ejecutar-programas-desde-archivos" title="Link to this heading">#</a></h3>
+<p>Para ejecutar programas (<em>scripts</em>) JavaScript desde archivos se debe invocar el comando con el nombre del archivo de la siguiente manera:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>node<span class="w"> </span>programa.js
+</pre></div>
+</div>
+<p>Los programas de ejempo de esta clase están en la carpeta <code class="docutils literal notranslate"><span class="pre">ejemplos</span></code>. Para poder evaluarlos sin tener que escribir todo el <em>path</em> hay que situarse en la carpeta de los ejemplos desde la termianl con el comando <code class="docutils literal notranslate"><span class="pre">cd</span></code>.</p>
+<p>El siguiente programa está en el archivo <code class="docutils literal notranslate"><span class="pre">ej-programa.js</span></code> en el directorio actual:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Para poder ver los resultados de las operaciones siempre tenemos</span>
+<span class="c1">// que usar `console.log`, no existe la función `print` como en p5.js.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Inicio programa en Node.js&#39;</span><span class="p">);</span>
+
+<span class="c1">// Declaramos variables y realizamos operaciones.</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+
+<span class="c1">// Imprimimos la cadena en la salida estándar.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El resultado de x elevado a y es: </span><span class="si">${</span><span class="nx">resultado</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>y lo podemos ejecutar en la termial como tal:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>ejemplos
+$<span class="w"> </span>node<span class="w"> </span>programa1.js
+Inicio<span class="w"> </span>programa<span class="w"> </span>en<span class="w"> </span>Node.js
+El<span class="w"> </span>resultado<span class="w"> </span>de<span class="w"> </span>x<span class="w"> </span>elevado<span class="w"> </span>a<span class="w"> </span>y<span class="w"> </span>es:<span class="w"> </span><span class="m">256</span>
+</pre></div>
+</div>
+<p>En el ejemplo de arriba hay dos líneas que comienzan con el signo <code class="docutils literal notranslate"><span class="pre">$</span></code>. Este signo no se escribe, significa que lo que sigue es un comando a ser ejecutado por línea de comandos.</p>
+<p>Puede representar al <em>símbolo de sistema</em> en <em>MS-DOS</em> o cualquier <em>shell</em> que estemos utilizando.</p>
+<blockquote>
+<div><p>Ejercicio: Evaluar el archivo <code class="docutils literal notranslate"><span class="pre">ejemplo-dirname.js</span></code> de la carpeta de ejemplos.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="modulos-en-node-js">
+<h2>Módulos en Node.js<a class="headerlink" href="#modulos-en-node-js" title="Link to this heading">#</a></h2>
+<p>Node.js provee una forma de crear e importar módulos y también cuenta con una librería de módulos estándar del intérprete. La documentación de estas librerías está disponble en:</p>
+<p><a class="reference external" href="https://nodejs.org/api/modules.html">https://nodejs.org/api/modules.html</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Por defecto puede que esa página nos muestre la docuemntación otra versión de la librería, en ese caso hay una opción para seleccionar la que estamos utilizando. Puede que no en todas las versiones estén las mismas librerías o que estas hayan cambiado en algo.</p>
+</div>
+<p>Estos módulos surgen de una especificación llamada <a class="reference external" href="https://en.wikipedia.org/wiki/CommonJS">CommonJS</a> y, a veces, se los refiere con ese nombre. Los módulos de Node.js se pueden <em>importar</em> dentro de nuestro programa con la función <code class="docutils literal notranslate"><span class="pre">require</span></code> que devuelve el objeto que representa el módulo y desde el cuál se pueden acceder sus objetos y funciones. El objeto módulo que retorna la función <code class="docutils literal notranslate"><span class="pre">require</span></code> se asigan a una constante con el mismo nombre por convención:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">nombremodulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;nombremodulo&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Esto difiere de cómo venimos trabajando en las páginas de p5.js donde en vez de importar módulos poníamos la etiqueta <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> con el código modularizado antes de usar el sketch. Además, después vamos a ver que el stándar ES6 también agregó una forma de crear e importar módulos que es posterior a la de Node.js.</p>
+</div>
+<p>Uno de los módulos estandar de Node.js es <code class="docutils literal notranslate"><span class="pre">os</span></code> (por <em>Operative System</em>) que sirve para obtener información del sistema operativo. El siguiente ejemplo está en el archivo <code class="docutils literal notranslate"><span class="pre">ej-os.js</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">);</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">mem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">totalmem</span><span class="p">();</span><span class="w">  </span><span class="c1">// Capacidad de la memoria RAM.</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">free</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">freemem</span><span class="p">();</span><span class="w">  </span><span class="c1">// Memoria RAM disponible.</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Memoria total: </span><span class="si">${</span><span class="nx">mem</span><span class="si">}</span><span class="sb">, memoria libre: </span><span class="si">${</span><span class="nx">free</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="modulos-de-usuario">
+<h3>Módulos de usuario<a class="headerlink" href="#modulos-de-usuario" title="Link to this heading">#</a></h3>
+<p>Para crear un módulo propio dentro de un proyecto hay que utilizar el objeto global <code class="docutils literal notranslate"><span class="pre">module</span></code> y asignarle un objeto con los datos a exportar a la propiedad <code class="docutils literal notranslate"><span class="pre">exports</span></code>. Por ejemplo, dentro de un archivo llamado <code class="docutils literal notranslate"><span class="pre">modulo.js</span></code> podemos poner el siguiente código:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">número</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cadena</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">función</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;función de mi módulo.&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Cualquier archivo de código JavaScript puede ser un módulo <em>CommonJS</em>, para poder usarlo como tal solo hay que utilizar la interfaz <code class="docutils literal notranslate"><span class="pre">module.exports</span></code> que almacena los datos del módulo y luego podemos importar el código con <code class="docutils literal notranslate"><span class="pre">require</span></code> y el path relativo al archivo actual. Por ejemplo, desde otro archivo, <code class="docutils literal notranslate"><span class="pre">main.js</span></code>, en el mismo directorio que el módulo podemos podemos hacer lo siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">modulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./modulo.js&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Utiliza el módulo&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">modulo</span><span class="p">.</span><span class="nx">número</span><span class="p">,</span><span class="w"> </span><span class="nx">modulo</span><span class="p">.</span><span class="nx">cadena</span><span class="p">);</span>
+<span class="nx">modulo</span><span class="p">.</span><span class="nx">función</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Lo que hace este sistema simplente es crear una manera de evaluar los scripts que son módulos y pasarle los valores del objeto global <code class="docutils literal notranslate"><span class="pre">module</span></code> al modulo o programa que lo requiere. Luego la función <code class="docutils literal notranslate"><span class="pre">require</span></code> búsca el módulo en los path preestablecidos evalúa el código JS que contiene y retorna el objeto que se le asignó a la propiedad <code class="docutils literal notranslate"><span class="pre">module.exports</span></code> del módulo.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Esto lo vemos así por ahora porque es la manera histórica de trabajar con Node.js y es algo muy simple e inteligete, pero con el estandar ES6 se agregó una implementación a JavaScript para poder importar y exportár módulos que es muy similar y se puede utilizar del lado del cliente también. Es posible que el estandar reemplace el uso de CommonJS en el futuro.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pa02/ch01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../pa01/debuging.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Debugueo</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ch02/cliente-servidor.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Servidor HTTP básico</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizacion-de-la-linea-de-comandos">Utilización de la línea de comandos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-los-comandos">Estructura de los Comándos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node-js">Node.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion">Instalación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modo-repl">Modo REPL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos-globales-de-node-js-y-el-navegador">Objetos globales de Node.js y el navegador</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejecutar-programas-desde-archivos">Ejecutar programas desde archivos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-en-node-js">Módulos en Node.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-de-usuario">Módulos de usuario</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucas Samaruga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
